@@ -1,0 +1,370 @@
+
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        {% load static %}
+        <link rel="stylesheet" href="{% static "DPF/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "DPF/bootstrap-table.min.css" %}">
+        <style type="text/css">
+            input {text-align: center;}
+            div.tab-pane.fade{margin:auto;}
+        </style>
+        <script type="text/javascript" src="{% static "DPF/jquery.min.js" %}"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("input").not("#inputShot").attr("readonly","readonly");
+                $("#ModifyAll").click(function () {
+                    $("input").removeAttr("readonly");
+                })
+                $("#ModifyAll").dblclick(function () {
+                    $("input").not("#inputShot").attr("readonly","readonly");
+                })
+                var quiteTime = 60 * 60;
+                var currentTime = 0;
+                $("*").click(function () {
+                    currentTime = 0;
+                });
+
+                $('*').mouseover(function () {
+                    currentTime = 0;
+                });
+
+                setInterval(function () {
+                    currentTime++;
+                    if (currentTime >= quiteTime) {
+                        {#alert("20分钟无人操作！");#}
+                        window.location.href = window.location.origin + "/login";
+                    }
+                }, 1000);
+                $("#Load").click(function () {
+                    var shot=$("#inputShot").val();
+                    $.get("../checkshot",{"shotnum":shot},function (result,status,xhr) {
+                        if(status=="success" && result.exist=="yes"){
+                            window.location.href="../load/"+shot;
+                        }
+                        else{
+                            alert("This Shot Is Not Exist!")
+                        }
+                        })
+                })
+                $("#home").click(function () {
+                    window.location.href=window.location.origin+"/home"
+                })
+            });
+        </script>
+        <title>DPF</title>
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+            <!-- 主题 -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 id="title" class="text-center">
+                        反馈控制参数
+{#                        <small class="text-muted">Designed by Dr. Songxm</small>#}
+                    </h3>
+                </div>
+            </div>
+            <hr>
+            <!--header information-->
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-2">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="version">Version:</span>
+                      </div>
+                      <input type="text" name="version" id="version" class="form-control version header"  aria-describedby="version"  disabled="true" value="{{ header.0 }}">
+                    </div>
+                 </div>
+                <div class="col-md-2">
+                     <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="operator">Operator:</span>
+                          </div>
+                          <input type="text" name="operator" id="operator" class="form-control header"  aria-describedby="operator"  disabled="true" value="{{ header.1 }}">
+                    </div>
+                 </div>
+                <div class="col-md-2">
+                     <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">ShotNum:</span>
+                          </div>
+                          <input type="text" name="ShotNum" id="ShotNum" class="form-control header"  aria-describedby="basic-addon1" disabled="true" value="{{ header.2 }}">
+                    </div>
+                 </div>
+                <div class="col-md-3"></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#OperationMode" role="tab" aria-controls="pills-home" aria-selected="true">OperationMode</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#Command" role="tab" aria-controls="pills-profile" aria-selected="false">Command</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#PIDcontroller" role="tab" aria-controls="pills-contact" aria-selected="false">PIDcontroller</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#EngineeringLimit" role="tab" aria-controls="pills-contact" aria-selected="false">EngineeringLimit</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#Other" role="tab" aria-controls="pills-contact" aria-selected="false">Other</a>
+                      </li>
+                    </ul>
+                    <form action="{% url "DPF:dpf_save" %}" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="OperationMode" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <div class="col-md-6" style="margin: auto;">
+                                            <table class="table table-hover m-3 table-sm" style="text-align: center">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Value</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for oms in om %}
+                                                    <tr>
+                                                        <th scope="row">{{ forloop.counter }}</th>
+                                                        <td>
+                                                            <input type="text" name="om-name" class="form-control om-name" id="om-name" value="{{ oms.name }}" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="om-value" class="form-control om-value" id="om-value" value="{{ oms.value }}"/>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Command" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <div class="col-md-10 " style="margin: auto;">
+                                            <table id="table" class="table table-hover m-3 table-sm " style="text-align: center" >
+                                              <thead>
+                                                <tr>
+                                                  <th scope="col">#</th>
+                                                  <th scope="col">Name</th>
+                                                  <th scope="col">Value</th>
+                                                  <th scope="col">Incharge</th>
+                                                  <th scope="col">CreateDate</th>
+                                                  <th scope="col">Db</th>
+                                                  <th scope="col">Comment</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                              {% for cmds in cmd %}
+                                                <tr>
+                                                  <th scope="row">{{ forloop.counter }}</th>
+                                                  <td>
+                                                      <input type="text" name="cmd-name" class="form-control cmd-name" id="cmd-name" value="{{ cmds.name }}" />
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="cmd-value" class="form-control cmd-value" id="cmd-value" value="{{ cmds.value }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="cmd-incharge" class="form-control cmd-incharge" id="cmd-incharge" value="{{ cmds.personInCharge }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="cmd-create" class="form-control cmd-create" id="cmd-create" value="{{ cmds.implementationHistory }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="cmd-db" class="form-control cmd-db" id="cmd-db" value="{{ cmds.db}}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="cmd-comment" class="form-control cmd-comment" id="cmd-comment" value="{{ cmds.comment }}"/>
+                                                  </td>
+                                                </tr>
+                                              {% endfor %}
+                                              </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="PIDcontroller" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                        <div class="col-md-12" style="margin: auto;">
+                                            <table class="table table-hover m-3 table-sm " style="text-align: center">
+                                              <thead>
+                                                <tr>
+                                                  <th scope="col">#</th>
+                                                  <th scope="col">Name</th>
+                                                  <th scope="col">P</th>
+                                                  <th scope="col">I</th>
+                                                  <th scope="col">D</th>
+                                                  <th scope="col">RC</th>
+                                                  <th scope="col">MaxdU</th>
+                                                  <th scope="col">FBStart</th>
+                                                  <th scope="col">maxInvAngle</th>
+                                                  <th scope="col">InCharge</th>
+                                                  <th scope="col">CreateDate</th>
+                                                  <th scope="col">Comment</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                              {% for pids in pid %}
+                                                  <tr>
+                                                  <th scope="row">{{ forloop.counter }}</th>
+                                                  <td>
+                                                      <input type="text" name="pid-name" class="form-control pid-name" id="pid-name" value="{{ pids.name }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-p" class="form-control pid-p" id="pid-p" value="{{ pids.P }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-i" class="form-control pid-i" id="pid-i" value="{{ pids.I }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-d" class="form-control pid-d" id="pid-d" value="{{ pids.D}}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-rc" class="form-control pid-rc" id="pid-rc" value="{{ pids.RC }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-maxdu" class="form-control pid-maxdu" id="pid-maxdu" value="{{ pids.maxdU }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-fbcstart" class="form-control pid-fbcstart" id="pid-fbcstart" value="{{ pids.FBStart }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-maxinvang" class="form-control pid-maxinvang" id="pid-maxinvang" value="{{ pids.maxInvAngle }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-incharge" class="form-control pid-incharge" id="pid-incharge" value="{{ pids.personInCharge }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-create" class="form-control pid-create" id="pid-create" value="{{ pids.implementationHistory }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="pid-comment" class="form-control pid-comment" id="pid-comment" value="{{ pids.comment }}"/>
+                                                  </td>
+                                                </tr>
+                                              {% endfor %}
+                                              </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="EngineeringLimit" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                         <div class="col-md-12" style="margin: auto;">
+                                            <table class="table table-hover m-3 table-sm" style="text-align: center">
+                                              <thead>
+                                                <tr>
+                                                  <th scope="col">#</th>
+                                                  <th scope="col">Name</th>
+                                                  <th scope="col">Value</th>
+                                                  <th scope="col">Incharge</th>
+                                                  <th scope="col">CreateDate</th>
+                                                  <th scope="col">Comment</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                              {% for els in el %}
+                                                <tr>
+                                                  <th scope="row">{{ forloop.counter }}</th>
+                                                  <td>
+                                                      <input type="text" name="el-name" class="form-control el-name" id="el-name" value="{{ els.name }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="el-value" class="form-control el-value" id="el-value" value="{{ els.value }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="el-incharge" class="form-control el-incharge" id="el-incharge" value="{{ els.personInCharge }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="el-creat" class="form-control el-creat" id="el-creat" value="{{ els.implementationHistory }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="el-comment" class="form-control el-comment" id="el-comment" value="{{ els.comment }}" style="width:300px" />
+                                                  </td>
+                                                </tr>
+                                              {% endfor %}
+                                              </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="Other" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                        <div class="col-md-6" style="margin: auto;">
+                                            <table class="table table-hover m-3 table-sm" style="text-align: center">
+                                              <thead>
+                                                <tr>
+                                                  <th scope="col">#</th>
+                                                  <th scope="col">Name</th>
+                                                  <th scope="col">Value</th>
+                                                  <th scope="col">Remark</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                              {% for ots in  ot %}
+                                                <tr>
+                                                  <th scope="row">{{ forloop.counter }}</th>
+                                                  <td>
+                                                      <input type="text" name="ot-name" class="form-control ot-name" id="ot-name" value="{{ ots.name }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="ot-value" class="form-control ot-value" id="ot-value" value="{{ ots.value }}"/>
+                                                  </td>
+                                                  <td>
+                                                      <input type="text" name="ot-remark" class="form-control ot-remark" id="ot-remark" value="{{ ots.remark }}" style="width:300px"/>
+                                                  </td>
+                                                </tr>
+                                              {% endfor %}
+                                              </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2 border-left">
+                                <div class="input-group">
+{#                                    <label for="inputShot">Shot:</label>#}
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="label-shot">Shot</span>
+                                    </div>
+                                    <input type="number" name="inputShot" class="form-control inputShot" id="inputShot" value="{{ header.2 }}" aria-describedby="label-shot"/>
+                                </div>
+                                <hr>
+                                <div class="text-center">
+                                    <button type="button" id="ModifyAll" class="btn btn-outline-primary ModifyAll" style="width: 50%">ModifyAll</button>
+                                </div>
+                                <hr>
+                                <div class="text-center">
+                                    <button type="button" id="Load" class="btn btn-outline-primary Load" style="width: 50%">Load</button>
+                                </div>
+                                <hr>
+                                <div class="text-center">
+                                    <button type="submit" id="Submit" class="btn btn-outline-primary Submit" style="width: 50%">Submit</button>
+                                </div>
+                                <hr>
+                                <div class="text-center">
+                                    <button type="button" id="home" class="btn btn-outline-primary home" style="width: 50%">Home</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{#        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>#}
+
+        <script src="{% static "DPF/popper.min.js" %}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="{% static "DPF/bootstrap.min.js" %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{% static "DPF/bootstrap-table.min.js"%}"></script>
+    </body>
+
+</html>

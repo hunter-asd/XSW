@@ -1,0 +1,460 @@
+
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        {% load static %}
+        <link rel="stylesheet" href="{% static "TCN/bootstrap.min.css" %}">
+        <style type="text/css">
+
+        </style>
+        <script type="text/javascript" src="{% static "TCN/jquery.min.js" %}"></script>
+        <script type="text/javascript">
+            $(function () {
+                var quiteTime = 60 * 60;
+                var currentTime = 0;
+                $("*").click(function () {
+                        currentTime = 0;
+                    });
+
+                $('*').mouseover(function () {
+                     currentTime = 0;
+                });
+
+                setInterval(function () {
+                    currentTime++;
+                    if(currentTime>=quiteTime)
+                    {
+                        {#alert("20分钟无人操作！");#}
+                        window.location.href=window.location.origin+"/login";
+                    }
+                }, 1000);
+                $("input").attr("required","required");
+                $("div.paraset").not("#CCLaunch").hide();
+                $("table").hide();
+                $("button.selet").click(function () {
+                    var s =$(this).text();
+                    $("div[id="+s+"]").show();
+                    $("div.paraset").not("#"+s).hide();
+
+                })
+                $("input").not(".header,#input-shot").attr("readonly","true");
+                $("button#ModifyAll").click(function () {
+                    $("input").removeAttr("readonly");
+                })
+                $("button#ModifyAll").dblclick(function () {
+                    $("input").not("#input-shot").attr("readonly","true");
+                })
+                $("button#Load").click(function () {
+                    var shot=$("#input-shot").val();
+                    $.get("../checkshot",{"shotnum":shot},function (result,status,xhr) {
+                        if(status=="success" && result.exist=="yes"){
+                            window.location.href="../load/"+shot;
+                        }
+                        else{
+                            alert("This Shot Is Not Exist!")
+                        }
+                        })
+                    }
+                )
+                $("#Primary").click(function () {
+                    $("table").toggle();
+                })
+                $("#home").click(function () {
+                    window.location.href=window.location.origin+"/home"
+                })
+
+            })
+
+        </script>
+        <title>TCN</title>
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+            <!-- 主题 -->
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 id="title" class="text-center">
+                        时序控制参数
+{#                        <small class="text-muted">Designed by Dr. Songxm</small>#}
+                    </h3>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <!-- 通道类别按钮 -->
+                <div class="col-md-2" align="center">
+                    <nav>
+                          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#Block1" role="tab" aria-controls="nav-home" aria-selected="true">Block1</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#Block2" role="tab" aria-controls="nav-profile" aria-selected="false">Block2</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#Block3" role="tab" aria-controls="nav-contact" aria-selected="false">Block3</a>
+                          </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                          <div class="tab-pane fade show active" id="Block1" role="tabpanel" aria-labelledby="nav-home-tab">
+                          <br>
+                              {% for b in block1 %}
+                                  <button type="button" id="{{ b }}" class="btn btn-outline-success btn-md selet" style="width: 70%">{{ b}}</button>
+                                  <hr>
+                              {% endfor %}
+                          </div>
+                          <div class="tab-pane fade" id="Block2" role="tabpanel" aria-labelledby="nav-profile-tab">
+                          <br>
+                              {% for b in block2 %}
+                                  <button type="button" id="{{ b }}" class="btn btn-outline-success btn-md selet" style="width: 70%">{{ b}}</button>
+                                  <hr>
+                              {% endfor %}
+                          </div>
+                          <div class="tab-pane fade" id="Block3" role="tabpanel" aria-labelledby="nav-contact-tab">
+                          <br>
+                              {% for b in block3 %}
+                                  <button type="button" id="{{ b }}" class="btn btn-outline-success btn-md selet" style="width: 70%">{{ b}}</button>
+                                  <hr>
+                              {% endfor %}
+                          </div>
+                        </div>
+                </div>
+                <!-- 信息区域 -->
+                <div class="col-md-10">
+                    <form action="{% url 'TCN:tcn_save' %}" method="post">
+                        {% csrf_token %}
+                        <!-- header信息 -->
+                        <div class="row">
+                             <div class="col-md-2"></div>
+                             <div class="col-md-2">
+                                <div class="input-group mb-3">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="version">Version:</span>
+                                  </div>
+                                  <input type="text" name="version" id="version" class="form-control version header"  aria-describedby="version"  disabled="true" value="V11">
+                                </div>
+                             </div>
+                             <div class="col-md-2">
+                                 <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="operator">Operator:</span>
+                                      </div>
+                                      <input type="text" name="operator" id="operator" class="form-control header"  aria-describedby="operator"  disabled="true" value="{{ header.1 }}">
+                                </div>
+                             </div>
+                             <div class="col-md-2">
+                                 <div class="input-group mb-3">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1">ShotNum:</span>
+                                      </div>
+                                      <input type="text" name="ShotNum" id="ShotNum" class="form-control header"  aria-describedby="basic-addon1" disabled="true" value="{{ header.2 }}">
+                                </div>
+                             </div>
+                             <div class="col-md-2"></div>
+                        </div>
+                        <hr>
+                        {% for datum in data %}
+                            <div class="row paraset" id="{{ datum.name }}">
+                                <!-- basic信息 -->
+                                <div class="col-md-3">
+                                    <div class="form-row ">
+                                        <div class="col-md-6 text-center">
+                                            <h4 style="text-align: center">BasicInformation:</h4>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="name">
+                                                Name:
+                                            </label>
+                                            <input type="text" name="name" id="name" class="form-control name" value="{{ datum.name }}"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+
+                                            <label for="id">
+                                                Id:
+                                            </label>
+                                            <input type="text" name="id" class="form-control id" id="id" value="{{ datum.id }}"/>
+                                        </div>
+                                        <div class="form-group col-md-12">
+
+                                            <label for="InitValue">
+                                                InitValue:
+                                            </label>
+                                            <input type="text" name="initialValue" class="form-control InitValue" id="InitValue" value="{{ datum.initialValue }}"/>
+                                        </div>
+                                        <div class="form-group col-md-12">
+
+                                            <label for="TimeUnit">
+                                                TimeUnit:
+                                            </label>
+                                            <input type="text" name="timeUnit" class="form-control TimeUnit" id="TimeUnit" value="{{ datum.timeUnit }}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 附加信息 -->
+                                <div class="col-md-3">
+                                    <div class="form-row ">
+                                        <div class="col-md-6 text-center">
+                                            <h4 style="text-align: center">AttachedInformation:</h4>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+
+                                            <label for="Division">
+                                                Division:
+                                            </label>
+                                            <input type="text" name="division" class="form-control Division" id="Division" value="{{ datum.division }}"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+
+                                            <label for="PersonInCharge">
+                                                PersonInCharge:
+                                            </label>
+                                            <input type="text" name="personInCharge" class="form-control PersonInCharge" id="PersonInCharge" value="{{ datum.personInCharge }}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+
+                                            <label for="ToPosition">
+                                                ToPosition:
+                                            </label>
+                                            <input type="text" name="toPosition" class="form-control ToPosition" id="ToPosition" value="{{ datum.toPosition }}"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+
+                                            <label for="InsituPosition">
+                                                InsituPosition
+                                            </label>
+                                            <input type="text" name="insituPosition" class="form-control InsituPosition" id="InsituPosition" value="{{ datum.insituPosition }}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+
+                                            <label for="CreatedDate">
+                                                CreatedDate:
+                                            </label>
+                                            <input type="text" name="implementationHistory" class="form-control CreatedDate" id="CreatedDate" value="{{ datum.implementationHistory }}"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+
+                                            <label for="Comment">
+                                                Comment:
+                                            </label>
+                                            <input type="text" name="comment" class="form-control Comment" id="Comment" value="{{ datum.comment }}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 触发条件信息 -->
+                                <div class="col-md-3">
+                                    <div class="form-row ">
+                                        <div class="col-md-6 text-center">
+                                            <h4 style="text-align: center">TriggerCondition:</h4>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+
+                                            <label for="IsSgmInv">
+                                                IsSgmInv:
+                                            </label>
+                                            <input type="text" name="isSigmaInverse" class="form-control" id="IsSgmInv" value="{{ datum.isSigmaInverse }}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+
+                                            <label for="OrSignal">
+                                                OrSignal:
+                                            </label>
+                                            <input type="text" class="form-control" id="OrSignal" readonly="true" disabled="disabled" value="yes"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+
+                                            <label for="AndSignal">
+                                                AndSignal:
+                                            </label>
+                                            <input type="text" class="form-control" id="AndSignal" readonly="true"  disabled="disabled" value="yes"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+
+                                            <label for="IsInverse">
+                                                IsInverse:
+                                            </label>
+                                            <input type="text" name="isInverse" class="form-control IsInverse" id="IsInverse" value="{{ datum.isInverse }}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+
+                                            <label for="AndSgm">
+                                                AndSgm:
+                                            </label>
+                                            <input type="text" name="andSignalName" class="form-control AndSgm" id="AndSgm" value="{{ datum.andSignalName }}"/>
+                                        </div>
+                                        <div class="form-group col-md-4">
+
+                                            <label for="CtnsSgm1">
+                                                CtnsSgm1:
+                                            </label>
+                                            <input type="text" name="ContinuousSigma1Check" class="form-control CtnsSgm1" id="CtnsSgm1" value="{{ datum.ContinuousSigma1Check }}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+
+                                            <label for="IsProtection">
+                                                IsProtection:
+                                            </label>
+                                            <input type="text" name="isProtection" class="form-control IsProtection" id="IsProtection" value="{{ datum.isProtection}}"/>
+                                        </div>
+                                        <div class="form-group col-md-8">
+
+                                            <label for="DelayTime">
+                                                DelayTime:
+                                            </label>
+                                            <input type="text" name="delayTime" class="form-control DelayTime" id="DelayTime" value="{{ datum.delayTime }}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 脉冲类型信息 -->
+                                <div class="col-md-3">
+                                    <div class="form-row ">
+                                        <div class="col-md-6 text-center">
+                                            <h4 style="text-align: center">PhaseClass:</h4>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+
+                                            <label for="RepeatNumber">
+                                                RepeatNumber:
+                                            </label>
+                                            <input type="text" name="repeatNumber" class="form-control RepeatNumber" id="RepeatNumber" value="{{ datum.repeatNumber}}"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+
+                                            <label for="TimingMode">
+                                                TimingMode:
+                                            </label>
+                                            <input type="text" name="timingMode" class="form-control TimingMode" id="TimingMode" value="{{ datum.timingMode }}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+
+                                            <label for="StartTime">
+                                                StartTime:
+                                            </label>
+                                            <input type="text" name="startTime" class="form-control StartTime" id="StartTime" value="{{ datum.startTime}}"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+
+                                            <label for="LowWidth">
+                                                LowWidth
+                                            </label>
+                                            <input type="text" name="lowWidth" class="form-control LowWidth" id="LowWidth" value="{{ datum.lowWidth }}"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+
+                                            <label for="HighWidth">
+                                                HighWidth:
+                                            </label>
+                                            <input type="text" name="highWidth" class="form-control HighWidth" id="HighWidth" value="{{ datum.highWidth }}"/>
+                                        </div>
+                                        <div class="form-group col-md-6">
+
+                                            <label for="EndTime">
+                                                EndTime:
+                                            </label>
+                                            {% load my_filter %}
+                                            <input type="text" name="EndTime" class="form-control EndTime" id="EndTime" value="{{ datum.highWidth|add:datum.startTime }}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group mb-3">
+                                     <div class="input-group-prepend">
+                                        <span class="input-group-text" id="shot">Shot</span>
+                                     </div>
+                                     <input type="number" name="input-shot" id="input-shot" class="form-control input-shot" placeholder="Input ShotNum" aria-label="" aria-describedby="shot" value="{{ header.2 }}">
+                                </div>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button type="button" id="ModifyAll" class="btn btn-outline-primary ModifyAll" style="width: 50%">ModifyAll</button>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button type="button" id="Load" class="btn btn-outline-primary Load" style="width: 50%">Load</button>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button type="submit" class="btn btn-outline-primary" style="width: 50%">Submit</button>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button type="button" id="Primary" class="btn btn-outline-primary" style="width: 50%">Primary</button>
+                            </div>
+                            <div class="col-md-2 text-center">
+                                <button type="button" id="home" class="btn btn-outline-primary home" style="width: 50%">Home</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                             <table class="table table-hover " style="text-align: center">
+                                  <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Port</th>
+                                            <th scope="col">Andsgm</th>
+                                            <th scope="col">CtnsSgm1</th>
+                                            <th scope="col">IsProtection</th>
+                                            <th scope="col">StartTime</th>
+                                            <th scope="col">HighWidth</th>
+                                            <th scope="col">TimeUnit</th>
+                                        </tr>
+                                  </thead>
+                                  <tbody>
+                                  {% for datam1 in data %}
+                                      {% if datam1.highWidth != "0"%}
+                                          <tr>
+                                            <th scope="row">{{ datam1.id }}</th>
+                                            <td>{{ datam1.name }}</td>
+                                            <td>{{ datam1.insituPosition }}</td>
+                                            <td>{{ datam1.andSignalName }}</td>
+                                            <td>{{ datam1.ContinuousSigma1Check }}</td>
+                                            <td>{{ datam1.isProtection }}</td>
+                                            <td>{{ datam1.startTime }}</td>
+                                            <td>{{ datam1.highWidth }}</td>
+                                            <td>{{ datam1.timeUnit }}</td>
+                                        </tr>
+                                      {% endif %}
+                                  {% endfor %}
+
+
+                                  </tbody>
+                             </table>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{#        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>#}
+
+        <script src="{% static "TCN/popper.min.js" %}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="{% static "TCN/bootstrap.min.js" %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+
+</html>
