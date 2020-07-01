@@ -77,7 +77,8 @@ def xmltomind(d,xml):
     dics={"id": d+"_"+str(uuid.uuid1().hex), "topic": d, "direction": "right", "expanded": True, "children":[]}
     for k, i in zip(xml.keys(), range(len(xml))):
         if isinstance(xml[k], str):
-            dics["children"].append({"id": k+"_"+str(uuid.uuid1().hex), "topic": k+":"+xml[k], "direction": "right", "expanded": True})
+            dics["children"].append({"id": k+"_"+str(uuid.uuid1().hex), "topic": k, "direction": "right", "expanded": True,
+                                     "children":[{"id": k+"str_"+str(uuid.uuid1().hex), "topic": xml[k], "direction": "right", "expanded": True,"parent":k}]})
         elif isinstance(xml[k], dict):
             dics["children"].append(xmltomind(k, xml[k]))
         else:
@@ -85,9 +86,10 @@ def xmltomind(d,xml):
     return dics
 #解析xml 成parameter格式和mind格式
 def parseNewAcq(path):
-    tree = et.parse(r"C:\Users\liuyongag\Desktop\NewVersionAcq.XML")
+    tree = et.parse(r"C:\Users\liuyongag\Desktop\NewXml\NewVersionAcq.XML")
     root = tree.getroot()
     param = findAllXmlNodes(root)
+    print(param)
     b = xmltomind("Acq", param)
     acqmind={"meta":{"name":"ACQ_structural","author":"liuyong","version":"2"},
 "format":"node_tree","data":b}

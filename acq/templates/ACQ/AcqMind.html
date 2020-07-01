@@ -9,7 +9,10 @@
         <link rel="stylesheet" href="{% static "ACQ/bootstrap-table.min.css" %}">
         <script type="text/javascript" src="{% static "ACQ/jsmind.js" %}"></script>
         <script type="text/javascript" src="{% static "ACQ/jquery.min.js" %}"></script>
+        <script type="text/javascript">
 
+
+        </script>
         <!--
             enable drag-and-drop feature
             <script type="text/javascript" src="js/jsmind.draggable.js"></script>
@@ -28,19 +31,41 @@
                 </div>
             </div>
             <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" id="Submit" class="btn btn-outline-primary Submit" style="width: 100%">Submit</button>
+                </div>
+            </div>
             <div class="row" >
                 <div class="col-md-12">
                     <div id="jsmind_container" style="width: 100%; height: 800px"></div>
                 </div>
                 <script type="text/javascript">
-                var mind ={{ acqmind|safe}}
+                var mindData ={{ acqmind|safe}}
                 var options = {
                     container:'jsmind_container',
                     theme:'primary',
                     editable:true
                 };
                 var jm = new jsMind(options);
-                jm.show(mind);
+                jm.show(mindData);
+                $("#Submit").click(function () {
+                    var jmd=jm.get_data("node_tree")
+                })
+                function parseMind2Xml(mindData) {
+                    var xml=""
+                    if (!mindData.hasOwnProperty("children")){
+                        return xml+"<"+mindData.parent+">"+mindData.topic+"</"+mindData.parent+">";
+                    }
+                    else{
+                        for(index in mindData.children){
+                            xml+="\n"+parseMind2Xml(mindData.children[index]);
+                        }
+                        xml+="<"+mindData.topic+">"+xml+"</"+mindData.topic+">"
+
+                    }
+                    return xml
+                }
             </script>
             </div>
 

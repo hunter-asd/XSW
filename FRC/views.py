@@ -15,7 +15,7 @@ def mylogin(request):
             if next:
                 return redirect(next)
             else:
-                return redirect(reverse("home"))
+                return redirect(reverse("FRC"))
         else:
             return render(request, "Login.html")
     else:
