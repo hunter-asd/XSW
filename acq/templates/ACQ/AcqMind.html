@@ -49,23 +49,17 @@
                 };
                 var jm = new jsMind(options);
                 jm.show(mindData);
-                $("#Submit").click(function () {
-                    var jmd=jm.get_data("node_tree")
-                })
-                function parseMind2Xml(mindData) {
-                    var xml=""
-                    if (!mindData.hasOwnProperty("children")){
-                        return xml+"<"+mindData.parent+">"+mindData.topic+"</"+mindData.parent+">";
-                    }
-                    else{
-                        for(index in mindData.children){
-                            xml+="\n"+parseMind2Xml(mindData.children[index]);
-                        }
-                        xml+="<"+mindData.topic+">"+xml+"</"+mindData.topic+">"
 
-                    }
-                    return xml
-                }
+                $("#Submit").click(function () {
+
+                    $.post("/acq/newsave/",{
+                        "newacq":JSON.stringify(jm.get_data("node_tree").data)
+                    },
+                    function (data,status) {
+                        alert("asd")
+                    })
+                })
+
             </script>
             </div>
 

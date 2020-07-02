@@ -4,6 +4,8 @@ import xml.etree.cElementTree as et
 import os.path
 from django.conf import  settings
 import uuid
+import re
+
 def getCurrentShot(target="MDS"):
     if target=="MDS":
         return MDSplus.Tree.getCurrent("EXL50")
@@ -89,8 +91,21 @@ def parseNewAcq(path):
     tree = et.parse(r"C:\Users\liuyongag\Desktop\NewXml\NewVersionAcq.XML")
     root = tree.getroot()
     param = findAllXmlNodes(root)
-    print(param)
     b = xmltomind("Acq", param)
     acqmind={"meta":{"name":"ACQ_structural","author":"liuyong","version":"2"},
-"format":"node_tree","data":b}
+            "format":"node_tree","data":b}
     return param,str(acqmind).replace("\'","\"").replace("True","false")
+
+def mindToxml(data):
+    xml = ""
+    if len(data["children"])==1 and not data["children"][0].get("children",None):
+        return xml+"<{0}>{1}</{0}>".format(data["topic"],data["children"][0]["topic"])
+
+    else:
+        for child in data["children"]:
+            xml+= "\n"+mindToxml(child);
+        if re.match("[A-Za-z]+",data["children"][0]["topic"]).group()==data["topic"]:
+            return xml
+        else:
+            return "<{0}>\t\t{1}\n</{0}>".format(re.match("[A-Za-z]+",data["topic"]).group(),xml)
+

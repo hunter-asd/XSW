@@ -3,7 +3,9 @@ from .acqFunction import load_xml,get_file_link,save_xml,update_mds
 from django.http import HttpResponse,JsonResponse
 from django.contrib.auth.decorators import login_required
 import os.path
-from MDSFunction import getCurrentShot,parseNewAcq
+import json
+from MDSFunction import getCurrentShot,parseNewAcq,mindToxml
+from xml.dom import minidom
 # Create your views here.
 app_name = "ACQ"
 
@@ -20,6 +22,14 @@ def acq_submit(request):
         return redirect(reverse("ACQ:acq_load",kwargs={"shot":request.POST.get("inputShot")}))
     else:
         return HttpResponse("git it")
+
+def newacq_submit(request):
+    if request.user.is_authenticated:
+        dom=minidom.parseString(mindToxml(json.loads(request.POST.get("newacq"))))
+        dom.toprettyxml()
+        with open("newxml.xml","w") as f:
+            dom.writexml(f,indent='', addindent='\t', newl='\n', encoding='UTF-8')
+        return HttpResponse("get it")
 
 def acq_load(request,shot):
     if request.user.is_authenticated:

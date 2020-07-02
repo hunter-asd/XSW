@@ -3,21 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9ff1ec5f-3eab-43aa-a5d5-e98365694318" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FRC/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FRC/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MDSFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/MDSFunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acq/templates/ACQ/AcqMind.html" beforeDir="false" afterPath="$PROJECT_DIR$/acq/templates/ACQ/AcqMind.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acq/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/acq/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acq/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/acq/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/FRC/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/FRC/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/FRC/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/FRC/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/FRC/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/views.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,43 +25,24 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newxmlparse.py">
+        <entry file="file://$PROJECT_DIR$/ACQ/templates/ACQ/AcqMind.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="375">
+              <caret line="64" selection-start-line="64" selection-end-line="64" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FRC/views.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ACQ/templates/ACQ/AcqMind.html">
+        <entry file="file://$PROJECT_DIR$/FRC/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="52" column="52" lean-forward="true" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
-              <folding>
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/NewXml/ACQ.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ACQ/templates/ACQ/ACQ.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="146" column="61" selection-start-line="146" selection-start-column="61" selection-end-line="146" selection-end-column="61" />
+            <state relative-caret-position="330">
+              <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -78,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACQ/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+            <state relative-caret-position="240">
+              <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -90,8 +62,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MDSFunction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="82" column="57" lean-forward="true" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
+            <state relative-caret-position="180">
+              <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -102,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACQ/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="5" column="45" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="45" />
+            <state relative-caret-position="300">
+              <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -114,8 +86,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACQ/templates/ACQ/NewACQ.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="493">
               <caret line="235" column="40" selection-start-line="235" selection-start-column="40" selection-end-line="235" selection-end-column="147" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#4;n#div#1;n#div#0;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,7 +98,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACQ/templatetags/my_filter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
+            <state relative-caret-position="930">
               <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
             </state>
           </provider>
@@ -132,7 +107,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ACQ/acqFunction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-420">
+            <state relative-caret-position="585">
               <caret line="46" selection-start-line="46" selection-end-line="46" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -188,27 +163,27 @@
         <option value="$PROJECT_DIR$/TCN/function.py" />
         <option value="$PROJECT_DIR$/DPF/templates/DPF/DPF.html" />
         <option value="$PROJECT_DIR$/templates/FRC/FRC.html" />
-        <option value="$PROJECT_DIR$/FRC/settings.py" />
         <option value="$PROJECT_DIR$/FRC/views.py" />
         <option value="$USER_HOME$/Desktop/NewVersionAcq.XML" />
         <option value="$USER_HOME$/Desktop/jsMind remote.jm" />
         <option value="$USER_HOME$/Desktop/NewVersionAcq.jm" />
-        <option value="$PROJECT_DIR$/ACQ/urls.py" />
         <option value="$PROJECT_DIR$/newxmlparse.py" />
         <option value="$PROJECT_DIR$/ACQ/acqFunction.py" />
-        <option value="$PROJECT_DIR$/ACQ/views.py" />
         <option value="$PROJECT_DIR$/ACQ/templatetags/my_filter.py" />
         <option value="$PROJECT_DIR$/ACQ/templates/ACQ/NewACQ.html" />
-        <option value="$PROJECT_DIR$/MDSFunction.py" />
+        <option value="$PROJECT_DIR$/ACQ/urls.py" />
+        <option value="$PROJECT_DIR$/FRC/settings.py" />
         <option value="$PROJECT_DIR$/ACQ/templates/ACQ/AcqMind.html" />
+        <option value="$PROJECT_DIR$/ACQ/views.py" />
+        <option value="$PROJECT_DIR$/MDSFunction.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2002" />
-    <option name="y" value="76" />
-    <option name="width" value="1934" />
-    <option name="height" value="1047" />
+    <option name="x" value="2005" />
+    <option name="y" value="21" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -222,24 +197,6 @@
             <path>
               <item name="FRC" type="b2602c69:ProjectViewProjectNode" />
               <item name="FRC" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FRC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FRC" type="462c0819:PsiDirectoryNode" />
-              <item name="ACQ" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FRC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FRC" type="462c0819:PsiDirectoryNode" />
-              <item name="ACQ" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FRC" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FRC" type="462c0819:PsiDirectoryNode" />
-              <item name="ACQ" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="ACQ" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="FRC" type="b2602c69:ProjectViewProjectNode" />
@@ -383,11 +340,13 @@
       <workItem from="1592785364826" duration="37000" />
       <workItem from="1593571014387" duration="494000" />
       <workItem from="1593572070389" duration="13533000" />
+      <workItem from="1593607449898" duration="4347000" />
+      <workItem from="1593672360139" duration="3942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="309458000" />
+    <option name="totallyTimeSpent" value="317747000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -402,22 +361,22 @@
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11940298" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12153518" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32858709" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27858627" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.27754676" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.44468784" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32827735" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32744282" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.39328277" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.37417942" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.37318087" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -512,16 +471,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/handlers/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ACQ/static/ACQ/jquery.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/ACQ/temaplates/ACQ/ACQ.html" />
     <entry file="file://$PROJECT_DIR$/ACQ/templates/ACQ/ModelACQ.XML">
       <provider selected="true" editor-type-id="text-editor" />
@@ -623,7 +572,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FRC/urls.py" />
     <entry file="file://$PROJECT_DIR$/DPF/dpfFunction.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -703,33 +651,10 @@
     <entry file="file://$PROJECT_DIR$/ACQ/static/ACQ/bootstrap-treeview.min.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/FRC/views.py" />
-    <entry file="file://$PROJECT_DIR$/FRC/settings.py" />
-    <entry file="file://$PROJECT_DIR$/FRC/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ACQ/templatetags/my_filter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/common.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
           <caret line="127" column="18" selection-start-line="127" selection-start-column="18" selection-end-line="127" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ACQ/templates/ACQ/NewACQ.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="235" column="40" selection-start-line="235" selection-start-column="40" selection-end-line="235" selection-end-column="147" />
         </state>
       </provider>
     </entry>
@@ -743,16 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ACQ/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/NewXml/ACQ.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -760,26 +675,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FRC/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3210">
+          <caret line="107" column="31" selection-start-line="107" selection-start-column="31" selection-end-line="107" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ACQ/templates/ACQ/ACQ.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
+        <state relative-caret-position="4380">
           <caret line="146" column="61" selection-start-line="146" selection-start-column="61" selection-end-line="146" selection-end-column="61" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ACQ/views.py">
+    <entry file="file://$PROJECT_DIR$/ACQ/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+        <state relative-caret-position="300">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
           <folding>
-            <element signature="e#0#52#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ACQ/templatetags/my_filter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/newxmlparse.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="-180">
           <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -787,9 +716,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ACQ/templates/ACQ/NewACQ.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="235" column="40" selection-start-line="235" selection-start-column="40" selection-end-line="235" selection-end-column="147" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#4;n#div#1;n#div#0;n#form#0;n#div#1;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/newxml.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="8906" column="20" lean-forward="true" selection-start-line="8906" selection-start-column="20" selection-end-line="8906" selection-end-column="20" />
+          <folding>
+            <element signature="n#Card#0;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Card#1;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Card#2;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Card#3;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Card#4;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Card#5;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Card#6;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Card#7;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Channel#0;n#Card#8;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Channel#1;n#Card#8;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Channel#2;n#Card#8;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Channel#3;n#Card#8;n#Crate#0;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Crate#1;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Crate#2;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Crate#3;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Crate#4;n#System#0;n#Acq#0;n#!!top" />
+            <element signature="n#Crate#5;n#System#0;n#Acq#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/NewXml/NewVersionAcq.XML">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="43668">
+          <caret line="6652" selection-start-line="6652" selection-end-line="6652" />
+          <folding>
+            <element signature="n#Channel#0;n#Card#0;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
+            <element signature="n#Channel#1;n#Card#0;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
+            <element signature="n#Channel#2;n#Card#0;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
+            <element signature="n#Card#1;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
+            <element signature="n#Card#2;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
+            <element signature="n#Card#3;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
+            <element signature="n#Card#4;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
+            <element signature="n#Card#5;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MDSFunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" column="9" lean-forward="true" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ACQ/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ACQ/acqFunction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-420">
+        <state relative-caret-position="585">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -797,23 +799,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MDSFunction.py">
+    <entry file="file://$USER_HOME$/Desktop/EXL50_Py/GenerateAcqXml.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="82" column="57" lean-forward="true" selection-start-line="82" selection-start-column="57" selection-end-line="82" selection-end-column="57" />
+        <state relative-caret-position="3120">
+          <caret line="104" column="79" selection-start-line="104" selection-start-column="25" selection-end-line="104" selection-end-column="79" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ACQ/templates/ACQ/AcqMind.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="52" column="52" lean-forward="true" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="375">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FRC/views.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FRC/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
         </state>
       </provider>
     </entry>
