@@ -3,11 +3,10 @@ import datetime
 import xml.etree.cElementTree as et
 import os.path
 from django.conf import  settings
-import uuid
-import re
 
-def getCurrentShot(target="MDS"):
-    if target=="MDS":
+
+def get_current_shot(target="MDS"):
+    if target == "MDS":
         return MDSplus.Tree.getCurrent("EXL50")
     else:
         tree = et.parse(os.path.join(settings.XMLPATH), r"CurrentShotNum\CurrentShotNum.xml")
@@ -15,97 +14,39 @@ def getCurrentShot(target="MDS"):
         return int(root.iter("shotnum").__next__().text)
 
 
-def getExpTime(shot):
-    tree = MDSplus.Tree("EXL50",shot)
+def get_exp_time(shot):
+    tree = MDSplus.Tree("EXL50", shot)
     time = datetime.datetime.utcfromtimestamp(tree.getNode("fbc:ip").getTimeInserted().time).strftime("%Y.%m.%d %H:%M:%S")
     tree.close()
     return time
-def getIpMaxValue(shot):
+
+
+def get_ip_max_value(shot):
     tree = MDSplus.Tree("EXL50", shot)
-    tree.setTimeContext(0, 6,None)
+    tree.setTimeContext(0, 6, None)
     mvalue = str(round(tree.getNode("fbc:ip").data().max(), 2))
     tree.setTimeContext(None, None, None)
     tree.close()
     return mvalue
-def ifAndFindEffective(shot):
-    tree=MDSplus.Tree("EXL50",shot)
-    n=tree.getNode("fbc:ip")
+
+
+def find_effective_shot(shot):
+    tree = MDSplus.Tree("EXL50", shot)
+    n = tree.getNode("fbc:ip")
     try:       
-        data=n.data()
+        data = n.data()
         return shot
     except MDSplus.mdsExceptions.TreeNODATA:
-        return ifAndFindEffective(shot-1)
+        return find_effective_shot(shot - 1)
 
-def getEffectiveCurrentShot(target="MDS"):
-    
-    if target=="MDS":
-        shot = MDSplus.Tree.getCurrent("EXL50")
 
-    else:
-        tree = et.parse(os.path.join(settings.XMLPATH), r"CurrentShotNum\CurrentShotNum.xml")
-        root = tree.getroot()
-        shot = int(root.iter("shotnum").__next__().text)
-    return ifAndFindEffective(shot)
-def updateDic(dic,k,v):
-    if dic.get(k,None):
-        if isinstance(dic[k],list):
-            dic[k].append(v)
-        else:
-            dic[k]=list([dic[k],v])
-    else:
-        dic[k]=v
+def get_effective_newest_shot(target="MDS"):
+    shot = get_current_shot(target)
+    return find_effective_shot(shot)
 
-#list 转换成dic
-def listtoDic(k,lis):
-    dic={}
-    for i in range(len(lis)):
-        dic[k+str(i+1)]=lis[i]
-    return dic
-#解析Newxml
-def findAllXmlNodes(root):
-    dics = {}
-    if root.getchildren():
-        for n in root.getchildren():
-            if n.getchildren():
-                updateDic(dics,n.tag,findAllXmlNodes(n))
-            else:
-                dics[n.tag] = n.text
-    else:
-        dics[root.tag] = root.text
-    return dics
-#解析出的xml数据转换成mind数据
-def xmltomind(d,xml):
-
-    dics={"id": d+"_"+str(uuid.uuid1().hex), "topic": d, "direction": "right", "expanded": True, "children":[]}
-    for k, i in zip(xml.keys(), range(len(xml))):
-        if isinstance(xml[k], str):
-            dics["children"].append({"id": k+"_"+str(uuid.uuid1().hex), "topic": k, "direction": "right", "expanded": True,
-                                     "children":[{"id": k+"str_"+str(uuid.uuid1().hex), "topic": xml[k], "direction": "right", "expanded": True,"parent":k}]})
-        elif isinstance(xml[k], dict):
-            dics["children"].append(xmltomind(k, xml[k]))
-        else:
-            dics["children"].append(xmltomind(k, listtoDic(k, xml[k])))
-    return dics
-#解析xml 成parameter格式和mind格式
-def parseNewAcq(path):
-    tree = et.parse(r"C:\Users\liuyongag\Desktop\NewXml\NewVersionAcq.XML")
-    root = tree.getroot()
-    param = findAllXmlNodes(root)
-    b = xmltomind("Acq", param)
-    acqmind={"meta":{"name":"ACQ_structural","author":"liuyong","version":"2"},
-            "format":"node_tree","data":b}
-    return param,str(acqmind).replace("\'","\"").replace("True","false")
-
-def mindToxml(data):
-    xml = ""
-    if len(data["children"])==1 and not data["children"][0].get("children",None):
-        return xml+"<{0}>{1}</{0}>".format(data["topic"],data["children"][0]["topic"])
-
-    else:
-        for child in data["children"]:
-            xml+= "\n"+mindToxml(child);
-        if re.match("[A-Za-z]+",data["children"][0]["topic"]).group()==data["topic"]:
-            return xml
-        else:
-            return "<{0}>\t\t{1}\n</{0}>".format(re.match("[A-Za-z]+",data["topic"]).group(),xml)
-
+#filetype :ACQ/DPF/TCN
+def get_file_link(filetype,shot):
+    path = settings.XMLPATH
+    folder = ("00000"+str(int(shot)//200*200))[-5:]
+    link = os.path.join(path, folder, filetype, ("00000"+str(shot))[-5:]+"ACQ.xml")
+    return link

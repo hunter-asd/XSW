@@ -1,7 +1,7 @@
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render,redirect,reverse
 from django.contrib.auth import authenticate,login, logout
-from MDSFunction import getCurrentShot,getExpTime,getIpMaxValue,getEffectiveCurrentShot
+from MDSFunction import get_current_shot,get_exp_time,get_ip_max_value,get_effective_newest_shot
 
 def mylogin(request):
     if request.method == "POST":
@@ -15,7 +15,7 @@ def mylogin(request):
             if next:
                 return redirect(next)
             else:
-                return redirect(reverse("FRC"))
+                return redirect(reverse("home"))
         else:
             return render(request, "Login.html")
     else:

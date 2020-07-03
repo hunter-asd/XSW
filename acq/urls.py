@@ -7,6 +7,4 @@ urlpatterns = [
     path("load/<int:shot>", views.acq_load, name="acq_load"),
     path("checkshot/", views.check_shot, name="checkshot"),
     path("save/", views.acq_submit, name="acq_save"),
-    path("newsave/", views.newacq_submit, name="newacq_save"),
-    path("structural/<int:shot>", views.structural, name="acq_structural"),
 ]

@@ -1,58 +1,58 @@
 from django.shortcuts import render,reverse,redirect
-from .acqFunction import load_xml,get_file_link,save_xml,update_mds
-from django.http import HttpResponse,JsonResponse
+from .acqFunction import save_xml
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 import os.path
 import json
-from MDSFunction import getCurrentShot,parseNewAcq,mindToxml
-from xml.dom import minidom
+from .acqFunction import load_xml,mind_to_xml
+from MDSFunction import get_current_shot,get_file_link
+
 # Create your views here.
 app_name = "ACQ"
 
 @login_required(login_url="../login")
 def acq_index(request):
-    return redirect(reverse("ACQ:acq_load", kwargs={"shot": getCurrentShot()}))
+    print("asd")
+    print(get_current_shot())
+    return redirect(reverse("ACQ:acq_load", kwargs={"shot": get_current_shot()}))
+
+# def acq_submit(request):
+#     if request.user.is_authenticated:
+#         save_xml(request)
+#         print(request.POST.get("mds"))
+#         if request.POST.get("mds") == "UdMDS":
+#             update_mds(request)
+#         return redirect(reverse("ACQ:acq_load",kwargs={"shot":request.POST.get("inputShot")}))
+#     else:
+#         return redirect(reverse("ACQ:acq_index"))
 
 def acq_submit(request):
     if request.user.is_authenticated:
-        save_xml(request)
-        print(request.POST.get("mds"))
-        if request.POST.get("mds") == "UdMDS":
-            update_mds(request)
-        return redirect(reverse("ACQ:acq_load",kwargs={"shot":request.POST.get("inputShot")}))
+        save_xml(request.POST.get("shot"), mind_to_xml(json.loads(request.POST.get("newacq"))).replace("<ACQ",
+                "<ACQ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"ACQ.xsd\"", 1))
+        return JsonResponse({"result": "submit successfully"})
     else:
-        return HttpResponse("git it")
+        return redirect(reverse("ACQ:acq_index"))
 
-def newacq_submit(request):
-    if request.user.is_authenticated:
-        dom=minidom.parseString(mindToxml(json.loads(request.POST.get("newacq"))))
-        dom.toprettyxml()
-        with open("newxml.xml","w") as f:
-            dom.writexml(f,indent='', addindent='\t', newl='\n', encoding='UTF-8')
-        return HttpResponse("get it")
 
 def acq_load(request,shot):
     if request.user.is_authenticated:
-        # header, channels = load_xml(shot)
-        new_xml_data, _ = parseNewAcq(get_file_link(shot))
-        print(new_xml_data)
-        return render(request, "ACQ/NewACQ.html",
-                      context={"data": new_xml_data})
+        new_xml_data, acqmind = load_xml(shot)
+        datatype=1
+        if datatype:
+            return render(request, "ACQ/APS.html",
+                          context={"acqmind": acqmind,"shot":new_xml_data["Header"]["shotnum"]})
+        else:
+            return render(request, "ACQ/NewACQ.html",
+                          context={"data": new_xml_data})
     else:
         return redirect(reverse("ACQ:acq_index"))
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
-    if os.path.exists(get_file_link(shot)):
+    if os.path.exists(get_file_link("ACQ",shot)):
         context = "yes"
     else:
         context = "no"
     return JsonResponse({"exist": context})
 
-def structural(request,shot):
-    if request.user.is_authenticated:
-        _,acqmind = parseNewAcq(get_file_link(shot))
-        return render(request, "ACQ/AcqMind.html",
-                      context={"acqmind": acqmind})
-    else:
-        return redirect(reverse("ACQ:acq_index"))
