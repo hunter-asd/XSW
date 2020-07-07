@@ -4,16 +4,16 @@ import os.path
 from django.http import JsonResponse,HttpResponse
 from django.contrib.auth.decorators import  login_required
 # Create your views here.
-from MDSFunction import getCurrentShot
+from MDSFunction import get_current_shot
 app_name = "DPF"
 
 @login_required(login_url="../login")
 def dpf_index(request):
-    return redirect(reverse("DPF:dpf_load",kwargs={"shot":getCurrentShot()}))
+    return redirect(reverse("DPF:dpf_load", kwargs={"shot":get_current_shot()}))
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
-    if os.path.exists(get_file_link(shot)):
+    if os.path.exists(get_file_link("DPF",shot)):
         context = "yes"
     else:
         context = "no"

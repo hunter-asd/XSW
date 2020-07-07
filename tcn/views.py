@@ -4,10 +4,10 @@ from .function import load_xml, get_file_link, save_xml
 from django.contrib.auth.decorators import  login_required
 import os.path
 # Create your views here.
-from MDSFunction import getCurrentShot
+from MDSFunction import get_current_shot
 @login_required(login_url="../login")
 def tcn_index(request):
-    return redirect(reverse("TCN:tcn_load", kwargs={"shot": getCurrentShot()}))
+    return redirect(reverse("TCN:tcn_load", kwargs={"shot": get_current_shot()}))
 
 
 def tcn_load(request, shot):
@@ -21,7 +21,7 @@ def tcn_load(request, shot):
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
-    if os.path.exists(get_file_link(shot)):
+    if os.path.exists(get_file_link("TCN",shot)):
         context = "yes"
     else:
         context = "no"

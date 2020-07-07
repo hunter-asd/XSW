@@ -1,0 +1,248 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>LOG</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static "LOGSYS/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "LOGSYS/bootstrap.min.css" %}">
+        <script type="text/javascript" src="{% static "LOGSYS/jquery.min.js" %}"></script>
+        <script type="text/javascript">
+
+
+        </script>
+        <!--
+            enable drag-and-drop feature
+            <script type="text/javascript" src="js/jsmind.draggable.js"></script>
+        -->
+    </head>
+    <body>
+        <div class="container-fluid">
+            <!-- 主题 -->
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 id="title" class="text-center">
+                        实验日志
+{#                        <small class="text-muted">Designed by Dr. Songxm</small>#}
+                    </h3>
+                </div>
+            </div>
+            <br>
+            <div class="row shadow p-3 mb-5 bg-white rounded">
+                <div class="col-md-2"></div>
+                <div class="col-md-2">
+                     <div class="input-group">
+                         <div class="input-group-prepend">
+                             <span class="input-group-text" id="label-shot">Shot</span>
+                         </div>
+                         <input type="number" name="inputShot" class="form-control inputShot" id="inputShot" value="" aria-describedby="label-shot"/>
+                     </div>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" id="Search" class="btn btn-outline-primary Submit" style="width: 100%">Search</button>
+                </div>
+                <div class="col-md-1">
+                     <button type="button" id="New" class="btn btn-outline-primary Submit" style="width: 100%">New</button>
+                </div>
+                <div class="col-md-1">
+                     <button type="button" id="Edit" class="btn btn-outline-primary Submit" style="width: 100%">Edit</button>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" id="Save" class="btn btn-outline-primary Submit" style="width: 100%">Save</button>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" id="home" class="btn btn-outline-primary Submit" style="width: 100%">Home</button>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-md-2"></div>
+                <div class="col-md-4 border border-primary rounded">
+                    <table class="table">
+                        <thead>
+                            <tr class="text-center">
+                                <th scope="col">#</th>
+                                <th scope="col">Shot</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Times</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for log in logs %}
+                            <tr class="text-center">
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td><a href="detail/{{ log.shot }}" onclick="return false">{{ log.shot }}</a></td>
+                                <td>{{ log.author }}</td>
+                                <td>{{ log.edit_time|date:"Y-m-d H:i:s"}}</td>
+                            </tr>
+                        {% endfor %}
+
+
+                          </tbody>
+                    </table>
+
+                    <ul class="pagination justify-content-center fixed-bottom">
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                        {% endif %}
+
+                        <li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+                        {% endif %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ paginator.num_pages }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                             </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-md-4 border border-success rounded" >
+                    <hr>
+                    <form>
+                        <div class="form-group row">
+                            <label for="shot" class="col-sm-2 col-form-label">Shot:</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="shot" placeholder="shot">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="logtitle" class="col-sm-2 col-form-label">Title:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="logtitle" placeholder="title">
+                            </div>
+                        </div>
+                         <div class="form-group">
+                             <label for="content">Content:</label>
+                             <textarea class="form-control" id="content" rows="15" placeholder="content" style="resize: none"></textarea>
+                         </div>
+                    </form>
+                </div>
+                <div class="col-md-2" ></div>
+                <script type="text/javascript">
+
+
+                    $("#Save").click(function () {
+                        if($("#shot").val()==""||$("#logtitle").val()||$("#content").val()==""){
+                            alert("Shot or Title or Content is empty")
+                        }else {
+                            $.post("save", {
+                                    "shot": $("#shot").val(),
+                                    "title": $("#logtitle").val(),
+                                    "content": $("#content").val(),
+                                },
+                                function (data, status) {
+                                    if (status == "success") {
+                                        alert(data + " Log Success");
+                                        window.location.href = window.location.origin + "/log"
+                                    } else {
+                                        alert("Some error occur when submit")
+                                    }
+
+                                })
+                        }
+                    });
+                    $("#Modify").click(function () {
+                        jm.enable_edit()
+                    });
+                    $("#Modify").dblclick(function () {
+                        jm.disable_edit()
+                    });
+                    var quiteTime = 60 * 60;
+                    var currentTime = 0;
+                    $("*").click(function () {
+                        currentTime = 0;
+                    });
+
+                    $('*').mouseover(function () {
+                        currentTime = 0;
+                    });
+
+                    setInterval(function () {
+                        currentTime++;
+                        if (currentTime >= quiteTime) {
+                            {#alert("20分钟无人操作！");#}
+                            window.location.href = window.location.origin + "/login";
+                        }
+                    }, 1000);
+                    $("#Load").click(function () {
+                    var shot=$("#inputShot").val();
+                    $.get("../checkshot",{"shotnum":shot},function (result,status,xhr) {
+                        if(status=="success" && result.exist=="yes"){
+                            window.location.href="../load/"+shot;
+                        }
+                        else{
+                            alert("This Shot Is Not Exist!");
+                        }
+                        })
+                });
+                    $("#home").click(function () {
+                        window.location.href=window.location.origin+"/home"
+                    });
+                    $("#Table").click(function () {
+                        window.location.href=window.location.origin+"/acq/load/"
+                    })
+                    $("a").click(function () {
+                        $.get({
+                            url:this.href,
+                            success:function (data,status,xhr) {
+                                if (status=="success"){
+                                    $("#shot").val(data.shot);
+                                    $("#logtitle").val(data.title);
+                                    $("#content").val(data.content);
+                                }else{
+                                    alert("Error occur when tring to get data ");
+                                }
+
+                            }
+                        })
+                    })
+                    $("#shot,#logtitle,#content").attr("disabled","disabled")
+                    $("#Edit").click(function () {
+                        $("#shot,#logtitle,#content").removeAttr("disabled");
+                    })
+                    $("#Edit").dblclick(function () {
+                        $("#shot,#logtitle,#content").attr("disabled","disabled");
+                    })
+                    $("#Search").click(function () {
+                        $.post("search/",{
+                            "shot":$("#inputShot").val(),
+                        },function (data, status) {
+                            if(data=="NoShot"){
+                                alert("No log for the shot")
+                            }
+                            else {
+                                $("tbody tr").remove();
+                                $("tbody").prepend(
+                                    "<tr>\n" +
+                                    "<th scope=\"row\">1</th>\n" +
+                                    "<td><a href=\"detail/" + data.shot + "\" onclick=\"return false\">" + data.shot + "</a></td>\n" +
+                                    "<td>" + data.author + "</td>\n" +
+                                    "<td>" + data.time + "</td>\n" +
+                                    "</tr>\n");
+                                $("#shot").val(data.shot);
+                                $("#logtitle").val(data.title);
+                                $("#content").val(data.content);
+                            }
+                        })
+                    })
+                    $("#New").click(function () {
+                        $("#shot,#logtitle,#content").removeAttr("disabled");
+                        $("#shot,#logtitle,#content").val("");
+                    })
+
+
+            </script>
+            </div>
+
+        </div>
+    </body>
+</html>

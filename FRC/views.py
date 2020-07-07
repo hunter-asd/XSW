@@ -1,6 +1,6 @@
-from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render,redirect,reverse
 from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth.decorators import login_required
 from MDSFunction import get_current_shot,get_exp_time,get_ip_max_value,get_effective_newest_shot
 
 def mylogin(request):
@@ -19,11 +19,10 @@ def mylogin(request):
         else:
             return render(request, "Login.html")
     else:
-
         logout(request)
         return render(request, "Login.html")
 
-
+@login_required(login_url="../login")
 def home(request):
     # shot = getEffectiveCurrentShot()
     # print({"currentshot": shot, "cdate": getExpTime(shot), "maxValue": getIpMaxValue(shot) + "KA"})

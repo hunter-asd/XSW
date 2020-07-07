@@ -1,24 +1,20 @@
 import xml.etree.cElementTree as ET
 from django.conf import  settings
 import os.path
-
+from MDSFunction import get_file_link
 om_keys = [ 'om-name', 'om-value']
 cmd_keys = ['cmd-name', 'cmd-value', 'cmd-incharge', 'cmd-create', 'cmd-db', 'cmd-comment']
 pid_keys = ['pid-name', 'pid-p', 'pid-i', 'pid-d', 'pid-rc', 'pid-maxdu', 'pid-fbcstart', 'pid-maxinvang', 'pid-incharge', 'pid-create', 'pid-comment']
 el_keys = ['el-name', 'el-value', 'el-incharge', 'el-creat', 'el-comment']
 ot_keys = ['ot-name', 'ot-value', 'ot-remark']
 
-def get_file_link(shot):
-    path = settings.XMLPATH
-    folder = ("00000"+str(int(shot)//200*200))[-5:]
-    link = os.path.join(path,folder,"DPF",("00000"+str(shot))[-5:]+"DPF.xml")
-    return link
 
 def parse_xml(shot):
-    file = get_file_link(shot)
+    file = get_file_link("DPF",shot)
     tree = ET.parse(file)
     root = tree.getroot()
     return root.find("Header").findall("*"), root.findall("OperationMode"),root.findall("Command"),root.findall("PIDcontroller"),root.findall("EngineeringLimit"),root.findall("Other")
+
 
 def load_xml(shot):
     header, om, cmd, pid, el, ot = parse_xml(shot)
@@ -57,6 +53,7 @@ def load_xml(shot):
            } for o in ot]
 
     return header, om, cmd, pid, el, ot
+
 
 def save_xml(data):
     tree = ET.parse(os.path.join(settings.BASE_DIR,r"DPF\templates\DPF\ModelDPF.XML"))
