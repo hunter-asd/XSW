@@ -12,7 +12,6 @@ app_name = "ACQ"
 
 @login_required(login_url="../login")
 def acq_index(request):
-    print("asd")
     print(get_current_shot())
     return redirect(reverse("ACQ:acq_load", kwargs={"shot": get_current_shot()}))
 
