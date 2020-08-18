@@ -30,11 +30,10 @@ def check_shot(request):
 
 def tcn_submit(request):
     if request.user.is_authenticated:
-        print(request.user.username)
         save_xml(request)
-        context = load_xml(request.POST.get("input-shot"))
-        # return redirect(reverse("TCN:tcn_load",kwargs={"shot": request.POST.get("input-shot")}))
-        return render(request, "TCN/TCN.html", context=context)
+        #context = load_xml(request.POST.get("input-shot"))
+        return redirect(reverse("TCN:tcn_load",kwargs={"shot": request.POST.get("input-shot")}))
+        #return render(request, "TCN/TCN.html", context=context)
     else:
         return redirect("TCN:tcn_index")
 

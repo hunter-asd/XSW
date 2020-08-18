@@ -63,7 +63,7 @@ def save_xml(shot,data):
     else:
         dom=minidom.parseString(data)
         dom.toprettyxml()
-        with open(get_file_link(shot), "w", encoding="UTF-8") as f:
+        with open(get_file_link("ACQ",shot), "w", encoding="UTF-8") as f:
             dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
 
 
@@ -100,8 +100,8 @@ def update_dic(dic, k, v):
 def list_to_dic(k, lis):
     dic = {}
     for i in range(len(lis)):
-        dic[k+str(i+1)]=lis[i]
-        # dic[list(lis[i].values())[0]+"_No.{}".format(str(i+1))] = lis[i]
+        # dic[k+str(i+1)]=lis[i]
+        dic[k+str(i+1)+"-"+list(lis[i].values())[0]] = lis[i]
     return dic
 
 

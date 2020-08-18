@@ -131,7 +131,7 @@
 
 
                     $("#Save").click(function () {
-                        if($("#shot").val()==""||$("#logtitle").val()||$("#content").val()==""){
+                        if($("#shot").val()==""||$("#logtitle").val()==""||$("#content").val()==""){
                             alert("Shot or Title or Content is empty")
                         }else {
                             $.post("save", {

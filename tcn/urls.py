@@ -8,4 +8,4 @@ urlpatterns = [
     path("save/", views.tcn_submit, name="tcn_save"),
     path("load/<int:shot>", views.tcn_load, name="tcn_load"),
     path("checkshot/", views.check_shot, name="check_shot"),
-]
+    ]

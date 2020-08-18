@@ -4,7 +4,7 @@ from django.conf import settings
 from MDSFunction import get_file_link
 
 nodes = ["name", "id", "initialValue", "timeUnit", "division", "personInCharge", "toPosition", "insituPosition", "implementationHistory",
-         "comment", "isSigmaInverse", "isInverse", "andSignalName", "ContinuousSigma1Check", "isProtection", "delayTime",
+         "comment", "isSigmaInverse", "isInverse", "andSignalName", "andMgeV", "isProtection", "delayTime",
          "repeatNumber", "timingMode", "startTime", "lowWidth", "highWidth"]
 
 
@@ -23,7 +23,11 @@ def load_xml(shot="4653"):
     for c in channels:
         cdata = {}
         for n in nodes:
-            cdata[n] = next(c.iter(n)).text
+            try:
+                
+                cdata[n] = next(c.iter(n)).text
+            except StopIteration:
+                cdata[0]=""
         data.append(cdata)
     data.sort(key=lambda cd:cd["id"])
     choose_button = [c["name"] for c in data]
@@ -40,4 +44,4 @@ def save_xml(data):
             nde.text = d
     next(root.iter("shotnum")).text = data.POST.get("input-shot")
     next(root.iter("operator")).text = data.user.username
-    tree.write(get_file_link(data.POST.get("input-shot")))
+    tree.write(get_file_link("TCN",data.POST.get("input-shot")))

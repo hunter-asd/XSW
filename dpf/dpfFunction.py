@@ -67,5 +67,5 @@ def save_xml(data):
     print(header)
     header[1].text = data.user.username
     header[2].text = data.POST.get("inputShot")
-    tree.write(get_file_link(data.POST.get("inputShot")))
+    tree.write(get_file_link("DPF",data.POST.get("inputShot")))
 

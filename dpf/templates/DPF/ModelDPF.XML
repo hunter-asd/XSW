@@ -1,23 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
 <DPF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DPF.xsd">
 <Header>
 <version>1.0</version>
-<operator>liuyong</operator>
-<shotnum>05098</shotnum>
+<operator>qidongkai</operator>
+<shotnum>05141</shotnum>
 </Header>
 <OperationMode>
 <name>RZMode</name>
 <value>0</value>
-
 </OperationMode>
 <OperationMode>
 <name>PowerSource</name>
 <value>0</value>
-
 </OperationMode>
 <OperationMode>
 <name>FB</name>
-<value>1</value>
-
+<value>0</value>
+</OperationMode>
+<OperationMode>
+<name>PS1Mode</name>
+<value>4</value>
+</OperationMode>
+<OperationMode>
+<name>PS2Mode</name>
+<value>3</value>
+</OperationMode>
+<OperationMode>
+<name>PS3Mode</name>
+<value>12</value>
+</OperationMode>
+<OperationMode>
+<name>PS4Mode</name>
+<value>0</value>
+</OperationMode>
+<OperationMode>
+<name>PS5Mode</name>
+<value>56</value>
 </OperationMode>
 <Command>
 <name>GENERATOR</name>
@@ -85,7 +103,7 @@
 </Command>
 <Command>
 <name>ECRH245B</name>
-<value>1</value>
+<value>0</value>
 <personInCharge>zhouqing</personInCharge>
 <implementationHistory>2019.3.15</implementationHistory>
 <db>0</db>
@@ -93,7 +111,7 @@
 </Command>
 <Command>
 <name>ECRH245C</name>
-<value>1</value>
+<value>0</value>
 <personInCharge>zhouqing</personInCharge>
 <implementationHistory>2019.12.2</implementationHistory>
 <db>0</db>
@@ -101,31 +119,47 @@
 </Command>
 <Command>
 <name>PS1</name>
-<value>1</value>
-<personInCharge>guanyupeng</personInCharge>
+<value>0</value>
+<personInCharge>zhoupeihai</personInCharge>
 <implementationHistory>2019.3.15</implementationHistory>
 <db>0</db>
 <comment>PS1_PF56</comment>
 </Command>
 <Command>
 <name>PS2</name>
-<value>1</value>
-<personInCharge>guanyupeng</personInCharge>
+<value>0</value>
+<personInCharge>zhoupeihai</personInCharge>
 <implementationHistory>2019.3.15</implementationHistory>
 <db>0</db>
 <comment>PS2_PF4</comment>
 </Command>
 <Command>
 <name>PS3</name>
-<value>1</value>
-<personInCharge>guanyupeng</personInCharge>
+<value>0</value>
+<personInCharge>zhoupeihai</personInCharge>
 <implementationHistory>2020.01.17</implementationHistory>
 <db>0</db>
 <comment>PS3_PF1-2</comment>
 </Command>
 <Command>
+<name>PS4</name>
+<value>0</value>
+<personInCharge>zhoupeihai</personInCharge>
+<implementationHistory>2020.05.18</implementationHistory>
+<db>0</db>
+<comment>None</comment>
+</Command>
+<Command>
+<name>PS5</name>
+<value>0</value>
+<personInCharge>zhoupeihai</personInCharge>
+<implementationHistory>2020.06.30</implementationHistory>
+<db>0</db>
+<comment>None</comment>
+</Command>
+<Command>
 <name>VAC</name>
-<value>1</value>
+<value>0</value>
 <personInCharge>Dr. Liu</personInCharge>
 <implementationHistory>2019.3.15</implementationHistory>
 <db>0</db>
@@ -133,7 +167,7 @@
 </Command>
 <Command>
 <name>GP</name>
-<value>1</value>
+<value>0</value>
 <personInCharge>Dr. Liu</personInCharge>
 <implementationHistory>2019.3.15</implementationHistory>
 <db>0</db>
@@ -173,7 +207,7 @@
 </Command>
 <Command>
 <name>MAC</name>
-<value>1</value>
+<value>0</value>
 <personInCharge>Dr. Liu</personInCharge>
 <implementationHistory>2019.3.15</implementationHistory>
 <db>0</db>
@@ -287,7 +321,20 @@
 <comment>no</comment>
 </PIDcontroller>
 <PIDcontroller>
-<name>ECRH</name>
+<name>ECRHA</name>
+<P>10</P>
+<I>10</I>
+<D>10</D>
+<RC>10</RC>
+<maxdU>20</maxdU>
+<FBStart>-1000</FBStart>
+<maxInvAngle>0</maxInvAngle>
+<personInCharge>Dr. Liu</personInCharge>
+<implementationHistory>2019.3.15</implementationHistory>
+<comment>no</comment>
+</PIDcontroller>
+<PIDcontroller>
+<name>ECRHB</name>
 <P>10</P>
 <I>10</I>
 <D>10</D>
@@ -307,19 +354,6 @@
 <RC>10</RC>
 <maxdU>20</maxdU>
 <FBStart>200</FBStart>
-<maxInvAngle>0</maxInvAngle>
-<personInCharge>Dr. Liu</personInCharge>
-<implementationHistory>2019.3.15</implementationHistory>
-<comment>no</comment>
-</PIDcontroller>
-<PIDcontroller>
-<name>W1</name>
-<P>10</P>
-<I>10</I>
-<D>10</D>
-<RC>10</RC>
-<maxdU>20</maxdU>
-<FBStart>-1000</FBStart>
 <maxInvAngle>-2</maxInvAngle>
 <personInCharge>Dr. Liu</personInCharge>
 <implementationHistory>2019.3.15</implementationHistory>
@@ -352,60 +386,60 @@
 <comment>no</comment>
 </PIDcontroller>
 <EngineeringLimit>
-<name>ITF</name>
+<name>ITS</name>
 <value>25</value>
 <personInCharge>Dr. Liu</personInCharge>
-<implementationHistory>2019.3.15</implementationHistory>
-<comment>no</comment>
+<implementationHistory>2020.06.30</implementationHistory>
+<comment>OVER CURRENT PROTECTION</comment>
 </EngineeringLimit>
 <EngineeringLimit>
 <name>Ip</name>
 <value>100</value>
 <personInCharge>Dr. Liu</personInCharge>
-<implementationHistory>2019.3.15</implementationHistory>
-<comment>no</comment>
+<implementationHistory>2020.06.30</implementationHistory>
+<comment>OVER CURRENT PROTECTION</comment>
 </EngineeringLimit>
 <EngineeringLimit>
-<name>IPF1</name>
+<name>IPS1</name>
 <value>2000</value>
 <personInCharge>Dr. Liu</personInCharge>
-<implementationHistory>2019.3.15</implementationHistory>
-<comment>no</comment>
+<implementationHistory>2020.06.30</implementationHistory>
+<comment>OVER CURRENT PROTECTION</comment>
 </EngineeringLimit>
 <EngineeringLimit>
-<name>IPF2</name>
+<name>IPS2</name>
 <value>2000</value>
 <personInCharge>Dr. Liu</personInCharge>
-<implementationHistory>2019.3.15</implementationHistory>
-<comment>no</comment>
+<implementationHistory>2020.06.30</implementationHistory>
+<comment>OVER CURRENT PROTECTION</comment>
 </EngineeringLimit>
 <EngineeringLimit>
-<name>IPF3</name>
+<name>IPS3</name>
 <value>4500</value>
 <personInCharge>Dr. Liu</personInCharge>
-<implementationHistory>2019.3.15</implementationHistory>
-<comment>no</comment>
+<implementationHistory>2020.06.30</implementationHistory>
+<comment>OVER CURRENT PROTECTION</comment>
 </EngineeringLimit>
 <EngineeringLimit>
-<name>IPF4</name>
+<name>IPS4</name>
 <value>20</value>
 <personInCharge>Dr. Liu</personInCharge>
-<implementationHistory>2019.3.15</implementationHistory>
-<comment>no</comment>
+<implementationHistory>2020.06.30</implementationHistory>
+<comment>OVER CURRENT PROTECTION</comment>
 </EngineeringLimit>
 <EngineeringLimit>
-<name>IPF5</name>
+<name>IPS5</name>
 <value>10</value>
 <personInCharge>Dr. Liu</personInCharge>
-<implementationHistory>2019.3.15</implementationHistory>
-<comment>no</comment>
+<implementationHistory>2020.06.30</implementationHistory>
+<comment>OVER CURRENT PROTECTION</comment>
 </EngineeringLimit>
 <EngineeringLimit>
-<name>IPF6</name>
+<name>IPS6</name>
 <value>10</value>
 <personInCharge>Dr. Liu</personInCharge>
-<implementationHistory>2019.3.15</implementationHistory>
-<comment>no</comment>
+<implementationHistory>2020.06.30</implementationHistory>
+<comment>OVER CURRENT PROTECTION</comment>
 </EngineeringLimit>
 <EngineeringLimit>
 <name>NELimit</name>
@@ -419,7 +453,7 @@
 <value>1</value>
 <personInCharge>Dr. Liu</personInCharge>
 <implementationHistory>2020.3.16</implementationHistory>
-<comment>min width of ne control signal  MS</comment>
+<comment>max width of ne control signal  MS</comment>
 </EngineeringLimit>
 <EngineeringLimit>
 <name>WLimit</name>
@@ -430,7 +464,7 @@
 </EngineeringLimit>
 <EngineeringLimit>
 <name>defaultLimit</name>
-<value>10</value>
+<value>100</value>
 <personInCharge>Dr. Liu</personInCharge>
 <implementationHistory>2019.3.15</implementationHistory>
 <comment>no</comment>
@@ -481,24 +515,24 @@
 <remark>PST LINE VOLTAGE</remark>
 </Other>
 <Other>
-<name>TS</name>
+<name>PSTS</name>
 <value>3</value>
-<remark>PERIOD OF PID CONTROL</remark>
+<remark>PERIOD OF PS PID CONTROL MS</remark>
 </Other>
 <Other>
-<name>PECRH1</name>
-<value>10</value>
-<remark>None</remark>
+<name>NETS</name>
+<value>0.2</value>
+<remark>PERIOD OF NE PID CONTROL MS</remark>
 </Other>
 <Other>
-<name>PECRH2</name>
-<value>10</value>
-<remark>None</remark>
+<name>NEMEAN</name>
+<value>2</value>
+<remark>NE MEAN PERIOD SINCE START S</remark>
 </Other>
 <Other>
 <name>IPmin</name>
 <value>20</value>
-<remark>THE MIN VALUE OF IP BOILD</remark>
+<remark>THE MIN VALUE OF IP BUILD</remark>
 </Other>
 <Other>
 <name>ULdefault</name>
@@ -506,17 +540,27 @@
 <remark>None</remark>
 </Other>
 <Other>
-<name>PS1</name>
-<value>IPF3</value>
-<remark>PS AND COIL WIRING CORRESPONDENCE</remark>
+<name>ECRHTS</name>
+<value>3</value>
+<remark>PERIOD OF ECRH PID CONTROL MS</remark>
 </Other>
 <Other>
-<name>PS2</name>
+<name>TFOFFSET1</name>
 <value>IPF6</value>
 <remark>VALIDATE VALUE IS IPF2 IPF3 IPF4 IPF6</remark>
 </Other>
 <Other>
-<name>PS3</name>
+<name>TFOFFSET2</name>
+<value>IPF2</value>
+<remark>VALIDATE VALUE IS IPF2 IPF3 IPF4 IPF6</remark>
+</Other>
+<Other>
+<name>TFOFFSET3</name>
+<value>IPF2</value>
+<remark>VALIDATE VALUE IS IPF2 IPF3 IPF4 IPF6</remark>
+</Other>
+<Other>
+<name>TFOFFSET4</name>
 <value>IPF2</value>
 <remark>VALIDATE VALUE IS IPF2 IPF3 IPF4 IPF6</remark>
 </Other>

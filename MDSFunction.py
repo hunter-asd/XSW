@@ -49,7 +49,10 @@ def get_effective_newest_shot(target="MDS"):
 
 #filetype :ACQ/DPF/TCN
 def get_file_link(filetype,shot):
+    filename=filetype
+    if filetype=="TCN":
+        filename="OUT"
     path = settings.XMLPATH
     folder = ("00000"+str(int(shot)//200*200))[-5:]
-    link = os.path.join(path, folder, filetype, ("00000"+str(shot))[-5:]+"ACQ.xml")
+    link = os.path.join(path, folder, filetype, ("00000"+str(shot))[-5:]+filename+".xml")
     return link
