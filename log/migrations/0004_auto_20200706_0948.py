@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('LOGSYS', '0003_auto_20200705_1100'),
+        ('log', '0003_auto_20200705_1100'),
     ]
 
     operations = [

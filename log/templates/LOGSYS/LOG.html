@@ -4,9 +4,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>LOG</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static "LOGSYS/bootstrap.min.css" %}">
-        <link rel="stylesheet" href="{% static "LOGSYS/bootstrap.min.css" %}">
-        <script type="text/javascript" src="{% static "LOGSYS/jquery.min.js" %}"></script>
+        <link rel="stylesheet" href="{% static "log/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "log/bootstrap.min.css" %}">
+        <script type="text/javascript" src="{% static "log/jquery.min.js" %}"></script>
         <script type="text/javascript">
 
 
@@ -141,7 +141,7 @@
                                 },
                                 function (data, status) {
                                     if (status == "success") {
-                                        alert(data + " Log Success");
+                                        alert(data + " log Success");
                                         window.location.href = window.location.origin + "/log"
                                     } else {
                                         alert("Some error occur when submit")

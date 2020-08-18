@@ -37,7 +37,7 @@ def find_effective_shot(shot):
     tree = MDSplus.Tree("EXL50", shot)
     n = tree.getNode("fbc:ip")
     try:       
-        data = n.data()
+        n.data()
         return shot
     except MDSplus.mdsExceptions.TreeNODATA:
         return find_effective_shot(shot - 1)
@@ -47,10 +47,10 @@ def get_effective_newest_shot(target="MDS"):
     shot = get_current_shot(target)
     return find_effective_shot(shot)
 
-#filetype :ACQ/DPF/TCN
+#filetype :acq/dpf/tcn
 def get_file_link(filetype,shot):
     filename=filetype
-    if filetype=="TCN":
+    if filetype=="tcn":
         filename="OUT"
     path = settings.XMLPATH
     folder = ("00000"+str(int(shot)//200*200))[-5:]

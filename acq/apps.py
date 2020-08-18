@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class AcqConfig(AppConfig):
-    name = 'ACQ'
+    name = 'acq'

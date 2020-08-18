@@ -8,7 +8,7 @@ from django.utils.decorators import method_decorator
 
 class LogList(ListView):
     model = Explog
-    template_name ="LOGSYS/LOG.html"
+    template_name ="log/LOG.html"
     paginate_by = 10
     context_object_name = "logs"
     ordering = "shot"
@@ -35,7 +35,7 @@ def save_log(request):
             Explog(shot=request.POST.get("shot"),title=request.POST.get("title"),content=request.POST.get("content"),author=request.user.username).save()
             return HttpResponse("Save")
     else:
-        return redirect(reverse("LOGSYS:mylog"))
+        return redirect(reverse("log:mylog"))
 
 
 def detail_log(request,shot):
@@ -46,7 +46,7 @@ def detail_log(request,shot):
         else:
             return HttpResponse("")
     else:
-        return redirect(reverse("LOGSYS:mylog"))
+        return redirect(reverse("log:mylog"))
 def search_log(request):
     if request.user.is_authenticated:
         if request.POST.get("shot"):
@@ -57,4 +57,4 @@ def search_log(request):
             else:
                 return HttpResponse("NoShot")
     else:
-        return redirect(reverse("LOGSYS:mylog"))
+        return redirect(reverse("log:mylog"))

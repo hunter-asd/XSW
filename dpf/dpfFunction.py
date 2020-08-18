@@ -1,7 +1,7 @@
 import xml.etree.cElementTree as ET
 from django.conf import  settings
 import os.path
-from MDSFunction import get_file_link
+from mds_function import get_file_link
 om_keys = [ 'om-name', 'om-value']
 cmd_keys = ['cmd-name', 'cmd-value', 'cmd-incharge', 'cmd-create', 'cmd-db', 'cmd-comment']
 pid_keys = ['pid-name', 'pid-p', 'pid-i', 'pid-d', 'pid-rc', 'pid-maxdu', 'pid-fbcstart', 'pid-maxinvang', 'pid-incharge', 'pid-create', 'pid-comment']
@@ -10,7 +10,7 @@ ot_keys = ['ot-name', 'ot-value', 'ot-remark']
 
 
 def parse_xml(shot):
-    file = get_file_link("DPF",shot)
+    file = get_file_link("dpf",shot)
     tree = ET.parse(file)
     root = tree.getroot()
     return root.find("Header").findall("*"), root.findall("OperationMode"),root.findall("Command"),root.findall("PIDcontroller"),root.findall("EngineeringLimit"),root.findall("Other")
@@ -56,7 +56,7 @@ def load_xml(shot):
 
 
 def save_xml(data):
-    tree = ET.parse(os.path.join(settings.BASE_DIR,r"DPF\templates\DPF\ModelDPF.XML"))
+    tree = ET.parse(os.path.join(settings.BASE_DIR,r"dpf\templates\dpf\ModelDPF.XML"))
     root = tree.getroot()
     header, nodes = root.find("Header").findall("*"), [root.findall("OperationMode"),root.findall("Command"),root.findall("PIDcontroller"),root.findall("EngineeringLimit"),root.findall("Other")]
     for nodek,node in zip([om_keys,cmd_keys,pid_keys,el_keys,ot_keys],nodes):
@@ -67,5 +67,5 @@ def save_xml(data):
     print(header)
     header[1].text = data.user.username
     header[2].text = data.POST.get("inputShot")
-    tree.write(get_file_link("DPF",data.POST.get("inputShot")))
+    tree.write(get_file_link("dpf",data.POST.get("inputShot")))
 

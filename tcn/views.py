@@ -4,10 +4,10 @@ from .function import load_xml, get_file_link, save_xml
 from django.contrib.auth.decorators import  login_required
 import os.path
 # Create your views here.
-from MDSFunction import get_current_shot
+from mds_function import get_current_shot
 @login_required(login_url="../login")
 def tcn_index(request):
-    return redirect(reverse("TCN:tcn_load", kwargs={"shot": get_current_shot()}))
+    return redirect(reverse("tcn:tcn_load", kwargs={"shot": get_current_shot()}))
 
 
 def tcn_load(request, shot):
@@ -15,13 +15,13 @@ def tcn_load(request, shot):
         if not shot:
             shot = 4653
         context = load_xml(shot)
-        return render(request, "TCN/TCN.html", context=context)
+        return render(request, "tcn/tcn.html", context=context)
     else:
-        return redirect("TCN:tcn_index")
+        return redirect("tcn:tcn_index")
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
-    if os.path.exists(get_file_link("TCN",shot)):
+    if os.path.exists(get_file_link("tcn",shot)):
         context = "yes"
     else:
         context = "no"
@@ -32,9 +32,9 @@ def tcn_submit(request):
     if request.user.is_authenticated:
         save_xml(request)
         #context = load_xml(request.POST.get("input-shot"))
-        return redirect(reverse("TCN:tcn_load",kwargs={"shot": request.POST.get("input-shot")}))
-        #return render(request, "TCN/TCN.html", context=context)
+        return redirect(reverse("tcn:tcn_load",kwargs={"shot": request.POST.get("input-shot")}))
+        #return render(request, "tcn/tcn.html", context=context)
     else:
-        return redirect("TCN:tcn_index")
+        return redirect("tcn:tcn_index")
 
 

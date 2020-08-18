@@ -6,14 +6,14 @@ import MDSplus
 from xml.dom import minidom
 import uuid
 import re
-from MDSFunction import get_file_link
+from mds_function import get_file_link
 nodes = ['channelDescription', 'ChnlName', 'Unit', 'ChnlId', 'Len', 'Post', 'MaxDat', 'Freq', 'LowRang', 'HighRang', 'Factor', 'Offset', 'Dly', 'DatAttr', 'DatWth', 'division', 'personInCharge', 'fromPosition', 'insituPosition', 'implementationHistory']
 mds_nodes=['Unit','LowRang', 'HighRang', 'Factor', 'Offset','MaxDat']
 
 
 # 解析旧版的acq.xml,返回头信息和主内容
 def parse_old_xml(shot):
-    file = get_file_link("ACQ",shot)
+    file = get_file_link("acq",shot)
     tree = et.parse(file)
     root = tree.getroot()
     return root.find("Header").findall("*"), root.findall("Channel")
@@ -51,7 +51,7 @@ def load_old_xml(shot):
 # 生成保存xml文件，根据是否传入炮号来判别新旧
 def save_xml(shot,data):
     if not shot:
-        tree = et.parse(os.path.join(settings.BASE_DIR, r"ACQ\templates\ACQ\ModelACQ.XML"))
+        tree = et.parse(os.path.join(settings.BASE_DIR, r"acq\templates\acq\ModelACQ.XML"))
         root = tree.getroot()
         header = root.find("Header").findall("*")
         for node in nodes:
@@ -63,7 +63,7 @@ def save_xml(shot,data):
     else:
         dom=minidom.parseString(data)
         dom.toprettyxml()
-        with open(get_file_link("ACQ",shot), "w", encoding="UTF-8") as f:
+        with open(get_file_link("acq",shot), "w", encoding="UTF-8") as f:
             dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
 
 
@@ -76,8 +76,8 @@ def update_mds(data):
     tree = MDSplus.Tree("exl50", 20000)
     for acqname,da in zip(data.POST.getlist("ChnlName"), new_data):
         for i in range(len(mds_nodes)):
-            print("ACQ:"+acqname+":"+mds_nodes[i])
-            n = tree.getNode("ACQ:"+acqname+":"+mds_nodes[i])
+            print("acq:"+acqname+":"+mds_nodes[i])
+            n = tree.getNode("acq:"+acqname+":"+mds_nodes[i])
             n.deleteData()
             if mds_nodes[i]!="Unit":
                 n.putData(float(da[i]))
@@ -151,10 +151,10 @@ def mind_to_xml(data):
 
 # 解析xml 成parameter格式和mind格式
 def load_xml(shot):
-    tree = et.parse(get_file_link("ACQ",shot))
+    tree = et.parse(get_file_link("acq",shot))
     root = tree.getroot()
     param = parse_acq(root)
-    b = xml_to_mind("ACQ", param)
+    b = xml_to_mind("acq", param)
     acqmind = {"meta":{"name":"ACQ_structural", "author": "liuyong", "version": "1"},
             "format":"node_tree","data":b}
     return param,str(acqmind).replace("\'", "\"").replace("True", "false")

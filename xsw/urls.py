@@ -1,4 +1,4 @@
-"""FRC URL Configuration
+"""xsw URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -17,15 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import mylogin,home,mainp
 
-app_name = "FRC"
+app_name = "xsw"
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("tcn/", include("TCN.urls")),
-    path("dpf/", include("DPF.urls")),
-    path("acq/", include("ACQ.urls")),
+    path("tcn/", include("tcn.urls")),
+    path("dpf/", include("dpf.urls")),
+    path("acq/", include("acq.urls")),
     path("home/", home, name="home"),
     path("", mainp, name="mainp"),
     path("login/", mylogin, name="mylogin"),
-    path("log/", include("LOGSYS.urls")),
+    path("log/", include("log.urls")),
 ]
 

@@ -1,7 +1,7 @@
 import xml.etree.cElementTree as ET
 import os.path
 from django.conf import settings
-from MDSFunction import get_file_link
+from mds_function import get_file_link
 
 nodes = ["name", "id", "initialValue", "timeUnit", "division", "personInCharge", "toPosition", "insituPosition", "implementationHistory",
          "comment", "isSigmaInverse", "isInverse", "andSignalName", "andMgeV", "isProtection", "delayTime",
@@ -10,7 +10,7 @@ nodes = ["name", "id", "initialValue", "timeUnit", "division", "personInCharge",
 
 def parse_xml(shot):
 
-    file = get_file_link("TCN",shot)
+    file = get_file_link("tcn",shot)
     print(file)
     tree = ET.parse(file)
     root = tree.getroot()
@@ -37,11 +37,11 @@ def load_xml(shot="4653"):
 
 
 def save_xml(data):
-    tree = ET.parse(os.path.join(settings.BASE_DIR, r"TCN\templates\TCN\TcnModel.XML"))
+    tree = ET.parse(os.path.join(settings.BASE_DIR, r"tcn\templates\tcn\TcnModel.XML"))
     root = tree.getroot()
     for n in nodes:
         for d,nde in zip(data.POST.getlist(n), list(root.iter(n))):
             nde.text = d
     next(root.iter("shotnum")).text = data.POST.get("input-shot")
     next(root.iter("operator")).text = data.user.username
-    tree.write(get_file_link("TCN",data.POST.get("input-shot")))
+    tree.write(get_file_link("tcn",data.POST.get("input-shot")))

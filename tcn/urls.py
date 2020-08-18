@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-app_name = "TCN"
+app_name = "tcn"
 urlpatterns = [
     path("", views.tcn_index, name="tcn_index"),
     # path("load/", views.tcn_index, name="tcn_index"),

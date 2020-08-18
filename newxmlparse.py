@@ -1,14 +1,16 @@
 import xml.etree.cElementTree as et
 import random
 import uuid
-def updateDic(dic,k,v):
-    if dic.get(k,None):
-        if isinstance(dic[k],list):
+
+#更新字典，如果键值不存在于字典，就加入键值对，如果已经存在，但值是列表，就更新对应列表，如果不是列表就将键值和新值更新为列表
+def updateDic(dic, k, v):
+    if dic.get(k, None):
+        if isinstance(dic[k], list):
             dic[k].append(v)
         else:
-            dic[k]=list([dic[k],v])
+            dic[k] = list([dic[k], v])
     else:
-        dic[k]=v
+        dic[k] = v
 
 def listtoDic(k,lis):
     dic={}
@@ -47,7 +49,7 @@ def parseNewAcq(path):
     tree = et.parse(r"C:\Users\liuyongag\Desktop\NewVersionAcq.XML")
     root = tree.getroot()
     param = findAllXmlNodes(root)
-    b = xmltomind("Acq", param)
+    b = xmltomind("acq", param)
     acqmind=mid={"meta":{"name":"ACQ_structural","author":"liuyong","version":"2"},
 "format":"node_tree","data":b}
 

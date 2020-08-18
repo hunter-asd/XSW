@@ -4,8 +4,8 @@ import os.path
 from django.http import JsonResponse,HttpResponse
 from django.contrib.auth.decorators import  login_required
 # Create your views here.
-from MDSFunction import get_current_shot
-app_name = "DPF"
+from mds_function import get_current_shot
+app_name = "dpf"
 
 @login_required(login_url="../login")
 def dpf_index(request):
@@ -13,7 +13,7 @@ def dpf_index(request):
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
-    if os.path.exists(get_file_link("DPF",shot)):
+    if os.path.exists(get_file_link("dpf",shot)):
         context = "yes"
     else:
         context = "no"
