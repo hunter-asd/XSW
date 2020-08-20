@@ -79,7 +79,7 @@
                     {#jm.expand_to_depth(3)#}
                     $("#Submit").click(function () {
 
-                        $.post("/Acq/save/",{
+                        $.post("/acq/save/",{
                             "newacq":JSON.stringify(jm.get_data("node_tree").data),
                             "shot":$("#inputShot").val()
                         },
@@ -130,7 +130,7 @@
                         window.location.href=window.location.origin+"/home"
                     });
                     $("#Table").click(function () {
-                        window.location.href=window.location.origin+"/Acq/load/"
+                        window.location.href=window.location.origin+"/acq/load/"
                     })
                     $("#jsmind_container").mousedown(function () {
                         var node = jm.get_selected_node()

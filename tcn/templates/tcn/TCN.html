@@ -103,22 +103,22 @@
                     <div class="tab-content" id="nav-tabContent">
                           <div class="tab-pane fade show active" id="Block1" role="tabpanel" aria-labelledby="nav-home-tab">
                           <br>
-                              {% for b in block1 %}
-                                  <button type="button" id="{{ b }}" class="btn btn-outline-success btn-md selet" style="width: 70%">{{ b}}</button>
+                              {% for b in tcn.outputSignal|slice:":11" %}
+                                  <button type="button" id="{{ b }}" class="btn btn-outline-success btn-md selet" style="width: 70%">{{b.name}}</button>
                                   <hr>
                               {% endfor %}
                           </div>
                           <div class="tab-pane fade" id="Block2" role="tabpanel" aria-labelledby="nav-profile-tab">
                           <br>
-                              {% for b in block2 %}
-                                  <button type="button" id="{{ b }}" class="btn btn-outline-success btn-md selet" style="width: 70%">{{ b}}</button>
+                              {% for b in tcn.outputSignal|slice:"11:22" %}
+                                  <button type="button" id="{{ b }}" class="btn btn-outline-success btn-md selet" style="width: 70%">{{ b.name}}</button>
                                   <hr>
                               {% endfor %}
                           </div>
                           <div class="tab-pane fade" id="Block3" role="tabpanel" aria-labelledby="nav-contact-tab">
                           <br>
-                              {% for b in block3 %}
-                                  <button type="button" id="{{ b }}" class="btn btn-outline-success btn-md selet" style="width: 70%">{{ b}}</button>
+                              {% for b in tcn.outputSignal|slice:"22:" %}
+                                  <button type="button" id="{{ b }}" class="btn btn-outline-success btn-md selet" style="width: 70%">{{ b.name}}</button>
                                   <hr>
                               {% endfor %}
                           </div>
@@ -136,7 +136,7 @@
                                   <div class="input-group-prepend">
                                     <span class="input-group-text" id="version">Version:</span>
                                   </div>
-                                  <input type="text" name="version" id="version" class="form-control version header"  aria-describedby="version"  disabled="true" value="{{ header.0 }}">
+                                  <input type="text" name=Header_version" id="version" class="form-control version header"  aria-describedby="version"  disabled="true" value="{{ tcn.Header.version }}">
                                 </div>
                              </div>
                              <div class="col-md-2">
@@ -144,7 +144,7 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text" id="operator">Operator:</span>
                                       </div>
-                                      <input type="text" name="operator" id="operator" class="form-control header"  aria-describedby="operator"  disabled="true" value="{{ header.1 }}">
+                                      <input type="text" name="Header_operator" id="operator" class="form-control header"  aria-describedby="operator"  disabled="true" value="{{ tcn.Header.operator }}">
                                 </div>
                              </div>
                              <div class="col-md-2">
@@ -152,13 +152,13 @@
                                       <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1">ShotNum:</span>
                                       </div>
-                                      <input type="text" name="ShotNum" id="ShotNum" class="form-control header"  aria-describedby="basic-addon1" disabled="true" value="{{ header.2 }}">
+                                      <input type="text" name="Header_shotnum" id="ShotNum" class="form-control header"  aria-describedby="basic-addon1" disabled="true" value="{{ tcn.Header.shotnum }}">
                                 </div>
                              </div>
                              <div class="col-md-2"></div>
                         </div>
                         <hr>
-                        {% for datum in data %}
+                        {% for datum in tcn.outputSignal %}
                             <div class="row paraset" id="{{ datum.name }}">
                                 <!-- basic信息 -->
                                 <div class="col-md-3">
@@ -173,28 +173,28 @@
                                             <label for="name">
                                                 Name:
                                             </label>
-                                            <input type="text" name="name" id="name" class="form-control name" value="{{ datum.name }}"/>
+                                            <input type="text" name="outputSignal_name" id="name" class="form-control name" value="{{ datum.name }}"/>
                                         </div>
                                         <div class="form-group col-md-6">
 
                                             <label for="id">
                                                 Id:
                                             </label>
-                                            <input type="text" name="id" class="form-control id" id="id" value="{{ datum.id }}"/>
+                                            <input type="text" name="outputSignal_id" class="form-control id" id="id" value="{{ datum.id }}"/>
                                         </div>
                                         <div class="form-group col-md-12">
 
                                             <label for="InitValue">
                                                 InitValue:
                                             </label>
-                                            <input type="text" name="initialValue" class="form-control InitValue" id="InitValue" value="{{ datum.initialValue }}"/>
+                                            <input type="text" name="outputSignal_initialValue" class="form-control InitValue" id="InitValue" value="{{ datum.initialValue }}"/>
                                         </div>
                                         <div class="form-group col-md-12">
 
                                             <label for="TimeUnit">
                                                 TimeUnit:
                                             </label>
-                                            <input type="text" name="timeUnit" class="form-control TimeUnit" id="TimeUnit" value="{{ datum.timeUnit }}"/>
+                                            <input type="text" name="outputSignal_timeUnit" class="form-control TimeUnit" id="TimeUnit" value="{{ datum.timeUnit }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -212,14 +212,14 @@
                                             <label for="Division">
                                                 Division:
                                             </label>
-                                            <input type="text" name="division" class="form-control Division" id="Division" value="{{ datum.division }}"/>
+                                            <input type="text" name="outputSignal_attachedInformation_division" class="form-control Division" id="Division" value="{{ datum.attachedInformation.division }}"/>
                                         </div>
                                         <div class="form-group col-md-6">
 
                                             <label for="PersonInCharge">
                                                 PersonInCharge:
                                             </label>
-                                            <input type="text" name="personInCharge" class="form-control PersonInCharge" id="PersonInCharge" value="{{ datum.personInCharge }}"/>
+                                            <input type="text" name="outputSignal_attachedInformation_personInCharge" class="form-control PersonInCharge" id="PersonInCharge" value="{{ datum.attachedInformation.personInCharge }}"/>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -228,14 +228,14 @@
                                             <label for="ToPosition">
                                                 ToPosition:
                                             </label>
-                                            <input type="text" name="toPosition" class="form-control ToPosition" id="ToPosition" value="{{ datum.toPosition }}"/>
+                                            <input type="text" name="outputSignal_attachedInformation_toPosition" class="form-control ToPosition" id="ToPosition" value="{{ datum.attachedInformation.toPosition }}"/>
                                         </div>
                                         <div class="form-group col-md-6">
 
                                             <label for="InsituPosition">
                                                 InsituPosition
                                             </label>
-                                            <input type="text" name="insituPosition" class="form-control InsituPosition" id="InsituPosition" value="{{ datum.insituPosition }}"/>
+                                            <input type="text" name="outputSignal_attachedInformation_insituPosition" class="form-control InsituPosition" id="InsituPosition" value="{{ datum.attachedInformation.insituPosition }}"/>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -244,14 +244,14 @@
                                             <label for="CreatedDate">
                                                 CreatedDate:
                                             </label>
-                                            <input type="text" name="implementationHistory" class="form-control CreatedDate" id="CreatedDate" value="{{ datum.implementationHistory }}"/>
+                                            <input type="text" name="outputSignal_attachedInformation_implementationHistory" class="form-control CreatedDate" id="CreatedDate" value="{{ datum.attachedInformation.implementationHistory }}"/>
                                         </div>
                                         <div class="form-group col-md-6">
 
                                             <label for="Comment">
                                                 Comment:
                                             </label>
-                                            <input type="text" name="comment" class="form-control Comment" id="Comment" value="{{ datum.comment }}"/>
+                                            <input type="text" name="outputSignal_attachedInformation_comment" class="form-control Comment" id="Comment" value="{{ datum.attachedInformation.comment }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -269,7 +269,7 @@
                                             <label for="IsSgmInv">
                                                 IsSgmInv:
                                             </label>
-                                            <input type="text" name="isSigmaInverse" class="form-control" id="IsSgmInv" value="{{ datum.isSigmaInverse }}"/>
+                                            <input type="text" name="outputSignal_triggerConditions_isSigmaInverse" class="form-control" id="IsSgmInv" value="{{ datum.triggerConditions.isSigmaInverse }}"/>
                                         </div>
                                         <div class="form-group col-md-4">
 
@@ -292,21 +292,21 @@
                                             <label for="IsInverse">
                                                 IsInverse:
                                             </label>
-                                            <input type="text" name="isInverse" class="form-control IsInverse" id="IsInverse" value="{{ datum.isInverse }}"/>
+                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_isInverse" class="form-control IsInverse" id="IsInverse" value="{{ datum.triggerConditions.orSignals.andSignals.isInverse }}"/>
                                         </div>
                                         <div class="form-group col-md-4">
 
                                             <label for="AndSgm">
                                                 AndSgm:
                                             </label>
-                                            <input type="text" name="andSignalName" class="form-control AndSgm" id="AndSgm" value="{{ datum.andSignalName }}"/>
+                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_andSignalName" class="form-control AndSgm" id="AndSgm" value="{{ datum.triggerConditions.orSignals.andSignals.andSignalName }}"/>
                                         </div>
                                         <div class="form-group col-md-4">
 
                                             <label for="andMgeV">
                                                 andMgeV:
                                             </label>
-                                            <input type="text" name="andMgeV" class="form-control andMgeV" id="andMgeV" value="{{ datum.andMgeV }}"/>
+                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_andMgeV" class="form-control andMgeV" id="andMgeV" value="{{ datum.triggerConditions.orSignals.andSignals.andMgeV }}"/>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -315,14 +315,14 @@
                                             <label for="IsProtection">
                                                 IsProtection:
                                             </label>
-                                            <input type="text" name="isProtection" class="form-control IsProtection" id="IsProtection" value="{{ datum.isProtection}}"/>
+                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_isProtection" class="form-control IsProtection" id="IsProtection" value="{{ datum.triggerConditions.orSignals.andSignals.isProtection}}"/>
                                         </div>
                                         <div class="form-group col-md-8">
 
                                             <label for="DelayTime">
                                                 DelayTime:
                                             </label>
-                                            <input type="text" name="delayTime" class="form-control DelayTime" id="DelayTime" value="{{ datum.delayTime }}"/>
+                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_delayTime" class="form-control DelayTime" id="DelayTime" value="{{ datum.triggerConditions.orSignals.andSignals.delayTime }}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -340,14 +340,14 @@
                                             <label for="RepeatNumber">
                                                 RepeatNumber:
                                             </label>
-                                            <input type="text" name="repeatNumber" class="form-control RepeatNumber" id="RepeatNumber" value="{{ datum.repeatNumber}}"/>
+                                            <input type="text" name="outputSignal_pulseClass_repeatNumber" class="form-control RepeatNumber" id="RepeatNumber" value="{{ datum.pulseClass.repeatNumber}}"/>
                                         </div>
                                         <div class="form-group col-md-6">
 
                                             <label for="TimingMode">
                                                 TimingMode:
                                             </label>
-                                            <input type="text" name="timingMode" class="form-control TimingMode" id="TimingMode" value="{{ datum.timingMode }}"/>
+                                            <input type="text" name="outputSignal_pulseClass_timingMode" class="form-control TimingMode" id="TimingMode" value="{{ datum.pulseClass.timingMode }}"/>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -356,14 +356,14 @@
                                             <label for="StartTime">
                                                 StartTime:
                                             </label>
-                                            <input type="text" name="startTime" class="form-control StartTime" id="StartTime" value="{{ datum.startTime}}"/>
+                                            <input type="text" name="outputSignal_pulseClass_startTime" class="form-control StartTime" id="StartTime" value="{{ datum.pulseClass.startTime}}"/>
                                         </div>
                                         <div class="form-group col-md-6">
 
                                             <label for="LowWidth">
                                                 LowWidth
                                             </label>
-                                            <input type="text" name="lowWidth" class="form-control LowWidth" id="LowWidth" value="{{ datum.lowWidth }}"/>
+                                            <input type="text" name="outputSignal_pulseClass_lowWidth" class="form-control LowWidth" id="LowWidth" value="{{ datum.pulseClass.lowWidth }}"/>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -372,7 +372,7 @@
                                             <label for="HighWidth">
                                                 HighWidth:
                                             </label>
-                                            <input type="text" name="highWidth" class="form-control HighWidth" id="HighWidth" value="{{ datum.highWidth }}"/>
+                                            <input type="text" name="outputSignal_pulseClass_highWidth" class="form-control HighWidth" id="HighWidth" value="{{ datum.pulseClass.highWidth }}"/>
                                         </div>
                                         <div class="form-group col-md-6">
 
@@ -380,7 +380,7 @@
                                                 EndTime:
                                             </label>
                                             {% load my_filter %}
-                                            <input type="text" name="EndTime" class="form-control EndTime" id="EndTime" value="{{ datum.highWidth|add:datum.startTime }}"/>
+                                            <input type="text" name="EndTime" class="form-control EndTime" id="EndTime" value="{{ datum.pulseClass.highWidth|add:datum.pulseClass.startTime }}" disabled="disabled"/>
                                         </div>
                                     </div>
                                 </div>
@@ -393,7 +393,7 @@
                                      <div class="input-group-prepend">
                                         <span class="input-group-text" id="shot">Shot</span>
                                      </div>
-                                     <input type="number" name="input-shot" id="input-shot" class="form-control input-shot" placeholder="Input ShotNum" aria-label="" aria-describedby="shot" value="{{ header.2 }}">
+                                     <input type="number" name="input-shot" id="input-shot" class="form-control input-shot" placeholder="Input ShotNum" aria-label="" aria-describedby="shot" value="{{ tcn.Header.shotnum }}">
                                 </div>
                             </div>
                             <div class="col-md-2 text-center">
@@ -428,17 +428,17 @@
                                         </tr>
                                   </thead>
                                   <tbody>
-                                  {% for datam1 in data %}
-                                      {% if datam1.highWidth != "0"%}
+                                  {% for datam1 in tcn.outputSignal %}
+                                      {% if datam1.pulseClass.highWidth != "0" %}
                                           <tr>
                                             <th scope="row">{{ datam1.id }}</th>
                                             <td>{{ datam1.name }}</td>
-                                            <td>{{ datam1.insituPosition }}</td>
-                                            <td>{{ datam1.andSignalName }}</td>
-                                            <td>{{ datam1.andMgeV }}</td>
-                                            <td>{{ datam1.isProtection }}</td>
-                                            <td>{{ datam1.startTime }}</td>
-                                            <td>{{ datam1.highWidth }}</td>
+                                            <td>{{ datam1.attachedInformation.insituPosition }}</td>
+                                            <td>{{ datam1.triggerConditions.orSignals.andSignals.andSignalName }}</td>
+                                            <td>{{ datam1.triggerConditions.orSignals.andSignals.andMgeV }}</td>
+                                            <td>{{ datam1.triggerConditions.orSignals.andSignals.isProtection }}</td>
+                                            <td>{{ datam1.pulseClass.startTime }}</td>
+                                            <td>{{ datam1.pulseClass.highWidth }}</td>
                                             <td>{{ datam1.timeUnit }}</td>
                                         </tr>
                                       {% endif %}

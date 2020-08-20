@@ -1,7 +1,7 @@
 import xml.etree.cElementTree as ET
 import os.path
 from django.conf import settings
-from mds_function import get_file_link
+# from mds_function import get_file_link
 
 nodes = ["name", "id", "initialValue", "timeUnit", "division", "personInCharge", "toPosition", "insituPosition", "implementationHistory",
          "comment", "isSigmaInverse", "isInverse", "andSignalName", "andMgeV", "isProtection", "delayTime",

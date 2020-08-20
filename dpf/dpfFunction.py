@@ -1,7 +1,7 @@
 import xml.etree.cElementTree as ET
 from django.conf import  settings
 import os.path
-from mds_function import get_file_link
+from xml_function import get_file_link
 om_keys = [ 'om-name', 'om-value']
 cmd_keys = ['cmd-name', 'cmd-value', 'cmd-incharge', 'cmd-create', 'cmd-db', 'cmd-comment']
 pid_keys = ['pid-name', 'pid-p', 'pid-i', 'pid-d', 'pid-rc', 'pid-maxdu', 'pid-fbcstart', 'pid-maxinvang', 'pid-incharge', 'pid-create', 'pid-comment']

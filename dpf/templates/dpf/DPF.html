@@ -7,13 +7,13 @@
 
         <!-- Bootstrap CSS -->
         {% load static %}
-        <link rel="stylesheet" href="{% static "DPF/bootstrap.min.css" %}">
-        <link rel="stylesheet" href="{% static "DPF/bootstrap-table.min.css" %}">
+        <link rel="stylesheet" href="{% static "dpf/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "dpf/bootstrap-table.min.css" %}">
         <style type="text/css">
             input {text-align: center;}
             div.tab-pane.fade{margin:auto;}
         </style>
-        <script type="text/javascript" src="{% static "DPF/jquery.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "dpf/jquery.min.js" %}"></script>
         <script type="text/javascript">
             $(function () {
                 $("input").not("#inputShot").attr("readonly","readonly");
@@ -80,7 +80,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="version">Version:</span>
                       </div>
-                      <input type="text" name="version" id="version" class="form-control version header"  aria-describedby="version"  disabled="true" value="{{ header.0 }}">
+                      <input type="text" name="version" id="version" class="form-control version header"  aria-describedby="version"  disabled="true" value="{{ dpf.Header.version }}">
                     </div>
                  </div>
                 <div class="col-md-2">
@@ -88,7 +88,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="operator">Operator:</span>
                           </div>
-                          <input type="text" name="operator" id="operator" class="form-control header"  aria-describedby="operator"  disabled="true" value="{{ header.1 }}">
+                          <input type="text" name="operator" id="operator" class="form-control header"  aria-describedby="operator"  disabled="true" value="{{ dpf.Header.operator }}">
                     </div>
                  </div>
                 <div class="col-md-2">
@@ -96,7 +96,7 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">ShotNum:</span>
                           </div>
-                          <input type="text" name="ShotNum" id="ShotNum" class="form-control header"  aria-describedby="basic-addon1" disabled="true" value="{{ header.2 }}">
+                          <input type="text" name="ShotNum" id="ShotNum" class="form-control header"  aria-describedby="basic-addon1" disabled="true" value="{{ dpf.Header.shotnum }}">
                     </div>
                  </div>
                 <div class="col-md-3"></div>
@@ -122,7 +122,7 @@
                         <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#Other" role="tab" aria-controls="pills-contact" aria-selected="false">Other</a>
                       </li>
                     </ul>
-                    <form action="{% url "DPF:dpf_save" %}" method="POST">
+                    <form action="{% url "dpf:dpf_save" %}" method="POST">
                         {% csrf_token %}
                         <div class="row">
                             <div class="col-md-10">
@@ -138,7 +138,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                {% for oms in om %}
+                                                {% for oms in dpf.OperationMode %}
                                                     <tr>
                                                         <th scope="row">{{ forloop.counter }}</th>
                                                         <td>
@@ -168,7 +168,7 @@
                                                 </tr>
                                               </thead>
                                               <tbody>
-                                              {% for cmds in cmd %}
+                                              {% for cmds in dpf.Command %}
                                                 <tr>
                                                   <th scope="row">{{ forloop.counter }}</th>
                                                   <td>
@@ -215,7 +215,7 @@
                                                 </tr>
                                               </thead>
                                               <tbody>
-                                              {% for pids in pid %}
+                                              {% for pids in dpf.PIDcontroller %}
                                                   <tr>
                                                   <th scope="row">{{ forloop.counter }}</th>
                                                   <td>
@@ -271,7 +271,7 @@
                                                 </tr>
                                               </thead>
                                               <tbody>
-                                              {% for els in el %}
+                                              {% for els in dpf.EngineeringLimit %}
                                                 <tr>
                                                   <th scope="row">{{ forloop.counter }}</th>
                                                   <td>
@@ -307,7 +307,7 @@
                                                 </tr>
                                               </thead>
                                               <tbody>
-                                              {% for ots in  ot %}
+                                              {% for ots in  dpf.Other %}
                                                 <tr>
                                                   <th scope="row">{{ forloop.counter }}</th>
                                                   <td>
@@ -333,7 +333,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="label-shot">Shot</span>
                                     </div>
-                                    <input type="number" name="inputShot" class="form-control inputShot" id="inputShot" value="{{ header.2 }}" aria-describedby="label-shot"/>
+                                    <input type="number" name="inputShot" class="form-control inputShot" id="inputShot" value="{{ dpf.Header.shotnum }}" aria-describedby="label-shot"/>
                                 </div>
                                 <hr>
                                 <div class="text-center">
@@ -362,9 +362,9 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 {#        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>#}
 
-        <script src="{% static "DPF/popper.min.js" %}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="{% static "DPF/bootstrap.min.js" %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="{% static "DPF/bootstrap-table.min.js"%}"></script>
+        <script src="{% static "dpf/popper.min.js" %}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="{% static "dpf/bootstrap.min.js" %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{% static "dpf/bootstrap-table.min.js"%}"></script>
     </body>
 
 </html>

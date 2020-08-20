@@ -47,12 +47,4 @@ def get_effective_newest_shot(target="MDS"):
     shot = get_current_shot(target)
     return find_effective_shot(shot)
 
-#filetype :acq/dpf/tcn
-def get_file_link(filetype,shot):
-    filename=filetype
-    if filetype=="tcn":
-        filename="OUT"
-    path = settings.XMLPATH
-    folder = ("00000"+str(int(shot)//200*200))[-5:]
-    link = os.path.join(path, folder, filetype, ("00000"+str(shot))[-5:]+filename+".xml")
-    return link
+

@@ -6,7 +6,7 @@ import MDSplus
 from xml.dom import minidom
 import uuid
 import re
-from mds_function import get_file_link
+from xml_function import get_file_link
 nodes = ['channelDescription', 'ChnlName', 'Unit', 'ChnlId', 'Len', 'Post', 'MaxDat', 'Freq', 'LowRang', 'HighRang', 'Factor', 'Offset', 'Dly', 'DatAttr', 'DatWth', 'division', 'personInCharge', 'fromPosition', 'insituPosition', 'implementationHistory']
 mds_nodes=['Unit','LowRang', 'HighRang', 'Factor', 'Offset','MaxDat']
 
@@ -117,8 +117,6 @@ def parse_acq(root):
     else:
         dics[root.tag] = root.text
     return dics
-
-
 # 解析出的xml数据转换成mind数据-node_tree
 def xml_to_mind(d, xml):
     dics = {"id": d+"_"+str(uuid.uuid1().hex), "topic": d, "direction": "right", "expanded": True, "children": []}

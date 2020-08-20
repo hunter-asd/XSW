@@ -1,7 +1,12 @@
 import xml.etree.cElementTree as et
 import uuid
-import sys
+import os.path
+import re
+import numpy as np
 import xml.dom.minidom as mdm
+from functools import reduce
+from django.conf import  settings
+
 #更新字典，如果键值不存在于字典，就加入键值对，如果已经存在，但值是列表，就更新对应列表，如果不是列表就将键值和新值更新为列表
 def update_dic(dic, k, v):
     if dic.get(k, None):
@@ -29,22 +34,37 @@ def parse_xml(root):
 def list_to_dic(k, lis):
     dic = {}
     for i in range(len(lis)):
-        dic[k+str(i+1)] = lis[i]
+        # dic[k+str(i+1)]=lis[i]
+        dic[k+str(i+1)+"-"+list(lis[i].values())[0]] = lis[i]
     return dic
 
 #xml字典数据转换为mind数据格式
-def xml_to_mind(topic, xml_data_dic):
-    mind_data = {"id": topic + "_" + str(uuid.uuid1().hex), "topic": topic, "direction": "right", "expanded": True,
-                 "children": []}
+def xml_to_mind(top, xml_data_dic):
+    dics = {"id": top + "_" + str(uuid.uuid1().hex), "topic": top, "direction": "right", "expanded": True, "children": []}
     for k, i in zip(xml_data_dic.keys(), range(len(xml_data_dic))):
         if isinstance(xml_data_dic[k], str):
-            mind_data["children"].append({"id": k + "_" + str(uuid.uuid1().hex), "topic": k + ":" + xml_data_dic[k],
-                                          "direction": "right", "expanded": True})
+            dics["children"]\
+                .append({"id": k+"_"+str(uuid.uuid1().hex), "topic": k, "direction": "right", "expanded": True,
+                    "children":[{"id": "strvalue_"+str(uuid.uuid1().hex), "topic": xml_data_dic[k], "direction": "right",
+                                 "expanded": True,"parent":k}]})
         elif isinstance(xml_data_dic[k], dict):
-            mind_data["children"].append(xml_to_mind(k, xml_data_dic[k]))
+            dics["children"].append(xml_to_mind(k, xml_data_dic[k]))
         else:
-            mind_data["children"].append(xml_to_mind(k, list_to_dic(k, xml_data_dic[k])))
-    return mind_data
+            dics["children"].append(xml_to_mind(k, list_to_dic(k, xml_data_dic[k])))
+    return dics
+#mind格式数据转换成xml数据
+def mind_to_xml(data):
+    xml = ""
+    if len(data["children"]) == 1 and not data["children"][0].get("children", None):
+        return xml+"<{0}>{1}</{0}>".format(data["topic"], data["children"][0]["topic"])
+
+    else:
+        for child in data["children"]:
+            xml += "\n" + mind_to_xml(child);
+        if re.match("[A-Za-z]+",data["children"][0]["topic"]).group()==data["topic"]:
+            return xml
+        else:
+            return "<{0}>\t\t{1}\n</{0}>".format(re.match("[A-Za-z]+", data["topic"]).group(), xml)
 # 生成mind 数据文件
 def gen_mind_file(xmltype,xmlpath,mindpath):
     tree = et.parse(xmlpath)
@@ -73,6 +93,35 @@ def pretty_xml(element, indent, newline, level = 0): # elemnt为传进来的Elme
             subelement.tail = newline + indent * level
         pretty_xml(subelement, indent, newline, level = level + 1) # 对子元素进行递归操作
     return element
+
+#filetype :acq/dpf/tcn
+def get_file_link(filetype,shot):
+    filename=filetype
+    if filetype=="TCN":
+        filename="OUT"
+    path = settings.XMLPATH
+    folder = ("00000"+str(int(shot)//200*200))[-5:]
+    link = os.path.join(path, folder, filetype, ("00000"+str(shot))[-5:]+filename+".xml")
+    return link
+
+def load_xml(shot,type):
+    file_path = get_file_link(type,shot)
+    root = et.parse(file_path).getroot()
+    return parse_xml(root)
+
+
+def save_xml(xmltype,submit_dic):
+    submit_dic.pop("csrfmiddlewaretoken")
+    shot = submit_dic.pop("input-shot")
+    data=[]
+    for v in submit_dic:
+        data.append(v)
+    data=np.array(data).T
+
+
+
+
+
 
 
 if __name__=="__main__":
