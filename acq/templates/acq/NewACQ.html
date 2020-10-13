@@ -7,15 +7,15 @@
 
         <!-- Bootstrap CSS -->
         {% load static %}
-        <link rel="stylesheet" href="{% static "ACQ/bootstrap.min.css" %}">
-        <link rel="stylesheet" href="{% static "ACQ/bootstrap-table.min.css" %}">
+        <link rel="stylesheet" href="{% static "acq/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "acq/bootstrap-table.min.css" %}">
         <style type="text/css">
             input {text-align: center;
             }
             div.tab-pane.fade{margin:auto;}
             div.input-group-text{width: 40%;}
         </style>
-        <script type="text/javascript" src="{% static "ACQ/jquery.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "acq/jquery.min.js" %}"></script>
         <script type="text/javascript">
             $(function () {
                 {#$("#table").bootstrapTable({dataView:true})#}
@@ -175,7 +175,7 @@
                 <div class="row container-fluid">
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
-                        <form action="{% url "ACQ:acq_save" %}" method="post">
+                        <form action="{% url "acq:acq_save" %}" method="post">
                         {% csrf_token %}
                             <div class="row container-fluid">
                                 <div class="col-md-10 ">
@@ -251,9 +251,9 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 {#        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>#}
 
-        <script src="{% static "ACQ/popper.min.js" %}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="{% static "ACQ/bootstrap.min.js" %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="{% static "ACQ/bootstrap-table.min.js"%}"></script>
+        <script src="{% static "acq/popper.min.js" %}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="{% static "acq/bootstrap.min.js" %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{% static "acq/bootstrap-table.min.js"%}"></script>
     </body>
 
 </html>

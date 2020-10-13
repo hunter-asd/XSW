@@ -7,4 +7,5 @@ urlpatterns = [
     path("load/<int:shot>", views.dpf_load, name="dpf_load"),
     path("checkshot/", views.check_shot, name="checkshot"),
     path("save/", views.dpf_submit, name="dpf_save"),
+    path("new/", views.dpf_new, name="dpf_new"),
 ]

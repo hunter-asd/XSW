@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="timingOutputSignal">
+		<xs:complexType>
+			<xs:sequence>
+			
+				<xs:element name="Header">
+					<xs:annotation>
+						<xs:documentation>header information</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="version" type="xs:decimal" default="1.0"/>
+							<xs:element name="operator" type="xs:string" default="songxm"/>
+							<xs:element name="shotnum" type="xs:string" default="20000"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+
+				<xs:element name="outputSignal" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The root element is usually named the same as the doctype.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="id" type="xs:string"/>
+							<xs:element name="initialValue" type="xs:boolean" default="false"/>
+							<xs:element name="timeUnit" type="xs:string" default="ms"/>
+							<xs:element name="attachedInformation">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="division" type="xs:string"/>
+										<xs:element name="personInCharge" type="xs:string"/>
+										<xs:element name="toPosition" type="xs:string"/>
+										<xs:element name="insituPosition" type="xs:string"/>
+										<xs:element name="implementationHistory" type="xs:string"/>
+										<xs:element name="comment" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="triggerConditions" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="isSigmaInverse" type="xs:boolean" default="false"/>
+										<xs:element name="orSignals" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="andSignals" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="isInverse" type="xs:boolean" default="false"/>
+																<xs:element name="andSignalName" type="xs:string"/>
+																<xs:element name="delayTime" type="xs:decimal" default="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="pulseClass" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="repeatNumber" type="xs:decimal" default="1"/>
+										<xs:element name="timingMode">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="absolute"/>
+													<xs:enumeration value="referenceToLastPulse"/>
+													<xs:enumeration value="referenceToConditions"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="startTime" type="xs:decimal" default="0"/>
+										<xs:element name="lowWidth" type="xs:decimal" default="0"/>
+										<xs:element name="highWidth" type="xs:decimal" default="1000"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

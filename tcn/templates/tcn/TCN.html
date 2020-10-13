@@ -66,6 +66,18 @@
                 $("#home").click(function () {
                     window.location.href=window.location.origin+"/home"
                 })
+                $("#Submit").click(function () {
+                    var shot=$("#input-shot").val();
+                    $.get("{% url "tcn:check_shot" %}",{"shotnum":shot},function (result,status,xhr) {
+                        if(status=="success" && result.older=="True"){
+                            alert("Could not modify experimented files!");
+                        }
+                        else{
+                            $("form").submit();
+                        }
+                    }
+                    )
+                })
 
 				
 				
@@ -161,7 +173,7 @@
                         {% for datum in tcn.outputSignal %}
                             <div class="row paraset" id="{{ datum.name }}">
                                 <!-- basic信息 -->
-                                <div class="col-md-3">
+                                <div class="col-md-2 border-left">
                                     <div class="form-row ">
                                         <div class="col-md-6 text-center">
                                             <h4 style="text-align: center">BasicInformation:</h4>
@@ -169,27 +181,27 @@
                                     </div>
                                     <hr>
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-8">
                                             <label for="name">
                                                 Name:
                                             </label>
                                             <input type="text" name="outputSignal_name" id="name" class="form-control name" value="{{ datum.name }}"/>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-8">
 
                                             <label for="id">
                                                 Id:
                                             </label>
                                             <input type="text" name="outputSignal_id" class="form-control id" id="id" value="{{ datum.id }}"/>
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-8">
 
                                             <label for="InitValue">
                                                 InitValue:
                                             </label>
                                             <input type="text" name="outputSignal_initialValue" class="form-control InitValue" id="InitValue" value="{{ datum.initialValue }}"/>
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-8">
 
                                             <label for="TimeUnit">
                                                 TimeUnit:
@@ -199,7 +211,7 @@
                                     </div>
                                 </div>
                                 <!-- 附加信息 -->
-                                <div class="col-md-3">
+                                <div class="col-md-3 border-left">
                                     <div class="form-row ">
                                         <div class="col-md-6 text-center">
                                             <h4 style="text-align: center">AttachedInformation:</h4>
@@ -256,7 +268,7 @@
                                     </div>
                                 </div>
                                 <!-- 触发条件信息 -->
-                                <div class="col-md-3">
+                                <div class="col-md-4 border-left">
                                     <div class="form-row ">
                                         <div class="col-md-6 text-center">
                                             <h4 style="text-align: center">TriggerCondition:</h4>
@@ -276,58 +288,61 @@
                                             <label for="OrSignal">
                                                 OrSignal:
                                             </label>
-                                            <input type="text" class="form-control" id="OrSignal" readonly="true" disabled="disabled" value="yes"/>
+                                            <button type="button" class="form-control btn btn-info" id="OrSignal" >{{ datum.triggerConditions.orSignals|length }}</button>
                                         </div>
                                         <div class="form-group col-md-4">
 
                                             <label for="AndSignal">
                                                 AndSignal:
                                             </label>
-                                            <input type="text" class="form-control" id="AndSignal" readonly="true"  disabled="disabled" value="yes"/>
+                                            <button type="button" class="form-control btn btn-info" id="AndSignal" data-toggle="collapse" data-target="#andSignals" aria-expanded="false" aria-controls="andSignals" >{{ datum.triggerConditions.orSignals.andSignals|length}}</button>
                                         </div>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
+                                    <div  class="" id="andSignals">
+                                        {% for andsig in datum.triggerConditions.orSignals.andSignals %}
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="IsInverse">
+                                                        IsInverse:
+                                                    </label>
+                                                    <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals{{ forloop.counter0 }}_isInverse{{ forloop.counter0 }}" class="form-control IsInverse" id="IsInverse" value="{{ andsig.isInverse }}"/>
+                                                </div>
+                                                <div class="form-group col-md-4">
 
-                                            <label for="IsInverse">
-                                                IsInverse:
-                                            </label>
-                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_isInverse" class="form-control IsInverse" id="IsInverse" value="{{ datum.triggerConditions.orSignals.andSignals.isInverse }}"/>
-                                        </div>
-                                        <div class="form-group col-md-4">
+                                                    <label for="AndSgm">
+                                                        AndSgm:
+                                                    </label>
+                                                    <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals{{ forloop.counter0 }}_andSignalName{{ forloop.counter0 }}" class="form-control AndSgm" id="AndSgm" value="{{ andsig.andSignalName }}"/>
+                                                </div>
+                                                <div class="form-group col-md-4">
 
-                                            <label for="AndSgm">
-                                                AndSgm:
-                                            </label>
-                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_andSignalName" class="form-control AndSgm" id="AndSgm" value="{{ datum.triggerConditions.orSignals.andSignals.andSignalName }}"/>
-                                        </div>
-                                        <div class="form-group col-md-4">
-
-                                            <label for="andMgeV">
-                                                andMgeV:
-                                            </label>
-                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_andMgeV" class="form-control andMgeV" id="andMgeV" value="{{ datum.triggerConditions.orSignals.andSignals.andMgeV }}"/>
-                                        </div>
+                                                    <label for="andMgeV">
+                                                        TimeDelay:
+                                                    </label>
+                                                    <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals{{ forloop.counter0 }}_delayTime{{ forloop.counter0 }}" class="form-control andMgeV" id="andMgeV" value="{{ andsig.delayTime }}"/>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
                                     </div>
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-
-                                            <label for="IsProtection">
-                                                IsProtection:
-                                            </label>
-                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_isProtection" class="form-control IsProtection" id="IsProtection" value="{{ datum.triggerConditions.orSignals.andSignals.isProtection}}"/>
-                                        </div>
-                                        <div class="form-group col-md-8">
-
-                                            <label for="DelayTime">
-                                                DelayTime:
-                                            </label>
-                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_delayTime" class="form-control DelayTime" id="DelayTime" value="{{ datum.triggerConditions.orSignals.andSignals.delayTime }}"/>
-                                        </div>
-                                    </div>
+{#                                    <div class="form-row">#}
+{#                                        <div class="form-group col-md-4">#}
+{##}
+{#                                            <label for="IsProtection">#}
+{#                                                IsProtection:#}
+{#                                            </label>#}
+{#                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_isProtection" class="form-control IsProtection" id="IsProtection" value="{{ datum.triggerConditions.orSignals.andSignals.isProtection}}"/>#}
+{#                                        </div>#}
+{#                                        <div class="form-group col-md-8">#}
+{##}
+{#                                            <label for="DelayTime">#}
+{#                                                DelayTime:#}
+{#                                            </label>#}
+{#                                            <input type="text" name="outputSignal_triggerConditions_orSignals_andSignals_delayTime" class="form-control DelayTime" id="DelayTime" value="{{ datum.triggerConditions.orSignals.andSignals.delayTime }}"/>#}
+{#                                        </div>#}
+{#                                    </div>#}
                                 </div>
                                 <!-- 脉冲类型信息 -->
-                                <div class="col-md-3">
+                                <div class="col-md-3 border-left">
                                     <div class="form-row ">
                                         <div class="col-md-6 text-center">
                                             <h4 style="text-align: center">PhaseClass:</h4>
@@ -387,7 +402,7 @@
                             </div>
                         {% endfor %}
                         <hr>
-                        <div class="row shadow p-3 mb-5 bg-white rounded">
+                        <div class="row shadow-sm p-3 mb-5 bg-white rounded">
                             <div class="col-md-2">
                                 <div class="input-group mb-3">
                                      <div class="input-group-prepend">
@@ -403,7 +418,7 @@
                                 <button type="button" id="Load" class="btn btn-outline-primary Load" style="width: 50%">Load</button>
                             </div>
                             <div class="col-md-2 text-center">
-                                <button type="submit" id="submit" class="btn btn-outline-primary" style="width: 50%">Submit</button>
+                                <button type="button" id="Submit" class="btn btn-outline-primary" style="width: 50%">Submit</button>
                             </div>
                             <div class="col-md-2 text-center">
                                 <button type="button" id="Primary" class="btn btn-outline-primary" style="width: 50%">Primary</button>
@@ -420,8 +435,6 @@
                                             <th scope="col">Name</th>
                                             <th scope="col">Port</th>
                                             <th scope="col">Andsgm</th>
-                                            <th scope="col">AndMgeV</th>
-                                            <th scope="col">IsProtection</th>
                                             <th scope="col">StartTime</th>
                                             <th scope="col">HighWidth</th>
                                             <th scope="col">TimeUnit</th>
@@ -434,9 +447,7 @@
                                             <th scope="row">{{ datam1.id }}</th>
                                             <td>{{ datam1.name }}</td>
                                             <td>{{ datam1.attachedInformation.insituPosition }}</td>
-                                            <td>{{ datam1.triggerConditions.orSignals.andSignals.andSignalName }}</td>
-                                            <td>{{ datam1.triggerConditions.orSignals.andSignals.andMgeV }}</td>
-                                            <td>{{ datam1.triggerConditions.orSignals.andSignals.isProtection }}</td>
+                                            <td>{{ datam1.triggerConditions.orSignals.andSignals.0.andSignalName}}+{{ datam1.triggerConditions.orSignals.andSignals.1.andSignalName}}+{{ datam1.triggerConditions.orSignals.andSignals.2.andSignalName}}</td>
                                             <td>{{ datam1.pulseClass.startTime }}</td>
                                             <td>{{ datam1.pulseClass.highWidth }}</td>
                                             <td>{{ datam1.timeUnit }}</td>

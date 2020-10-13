@@ -6,7 +6,7 @@ import os.path
 import xml_function
 # from .function import save_xml
 # Create your views here.
-from mds_function import get_current_shot
+from mds_function import get_current_shot,get_effective_newest_shot
 @login_required(login_url="../login")
 def tcn_index(request):
     return redirect(reverse("tcn:tcn_load", kwargs={"shot": get_current_shot()}))
@@ -21,16 +21,18 @@ def tcn_load(request, shot):
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
-    if os.path.exists(xml_function.get_file_link("tcn",shot)):
+    older = str(int(shot) < get_effective_newest_shot())
+    if os.path.exists(xml_function.get_file_link("TCN",shot)):
         context = "yes"
     else:
         context = "no"
-    return JsonResponse({"exist": context})
+    return JsonResponse({"exist": context,"older":older})
 
 
 def tcn_submit(request):
     if request.user.is_authenticated:
-        xml_function.save_xml("TCN",request.POST.copy())
+        data=dict(request.POST)
+        print(xml_function.save_tcn(data,request.user))
         return redirect(reverse("tcn:tcn_load",kwargs={"shot": request.POST.get("input-shot")}))
     else:
         return redirect("tcn:tcn_index")

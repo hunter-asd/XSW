@@ -3,9 +3,12 @@ import uuid
 import os.path
 import re
 import numpy as np
-import xml.dom.minidom as mdm
-from functools import reduce
+from xml.dom import minidom
+from lxml import etree as  let
 from django.conf import  settings
+import mds_function
+import copy
+HEADER=r"<Header><version>2.0</version><operator>{}</operator><shotnum>{}</shotnum></Header>"
 
 #更新字典，如果键值不存在于字典，就加入键值对，如果已经存在，但值是列表，就更新对应列表，如果不是列表就将键值和新值更新为列表
 def update_dic(dic, k, v):
@@ -97,7 +100,7 @@ def pretty_xml(element, indent, newline, level = 0): # elemnt为传进来的Elme
 #filetype :acq/dpf/tcn
 def get_file_link(filetype,shot):
     filename=filetype
-    if filetype=="TCN":
+    if filetype.upper()=="TCN":
         filename="OUT"
     path = settings.XMLPATH
     folder = ("00000"+str(int(shot)//200*200))[-5:]
@@ -110,20 +113,193 @@ def load_xml(shot,type):
     return parse_xml(root)
 
 
-def save_xml(xmltype,submit_dic):
-    submit_dic.pop("csrfmiddlewaretoken")
-    shot = submit_dic.pop("input-shot")
-    data=[]
-    for v in submit_dic:
-        data.append(v)
-    data=np.array(data).T
+
+#构造element 子节点
+def build_element_instance(keys):
+    n_set=set()
+    for k in keys:
+        n_set.update(k.split("_"))
+    nodes={}
+    multi_nodes={}
+    for n in n_set:
+        nodes[n]=et.Element(n)
+        multi_nodes[n] = et.Element(remove_tail_digit(n))
+    return nodes,multi_nodes
+
+def append_tag(parent,son,nodes,multi_nodes=None):
+
+    if nodes[parent].find(nodes[son].tag) !=None:
+        pass
+    else:
+        if multi_nodes:
+            multi_nodes[parent].append(multi_nodes[son])
+            nodes[parent].append(nodes[son])
+        else:
+            nodes[parent].append(nodes[son])
+#移除字符串末尾的数字
+def remove_tail_digit(a):
+    if a[-1].isdigit():
+        return remove_tail_digit(a[:-1])
+    else:
+        return a
+def save_tcn(data,user):
+    data.pop("csrfmiddlewaretoken")
+    shot = "00000"+data.pop("input-shot")[0]
+    shot=shot[-5:]
+    keys = data.keys()
+    values = np.array(list(data.values())).T
+    print(len(keys),values.shape)
+    # 将数据按照行信号，列节点组织数据
+    header = et.fromstring(HEADER.format(user,shot))
+    #构建包含命名空间的根节点
+    tcn_etree=et.ElementTree(et.fromstring("""<timingOutputSignal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="timingOutputSignals.xsd"></timingOutputSignal>"""))
+    tcn_root = tcn_etree.getroot()
+    tcn_root.append(header)
+    # 按照信号来循环处理
+    for i in range(len(values)):
+        # 生成一个信号所有的节点
+        nodes,multi_nodes = build_element_instance(keys)
+        # 遍历一个信号的节点及节点值
+        for k, v in zip(keys, values[i]):
+            # 按节点路径来组织节点
+            # 将节点路径解析成列表
+            if v:
+                k_list = k.split("_")
+                for j in range(len(k_list) - 1):
+                    append_tag(k_list[j], k_list[j + 1], nodes,multi_nodes)
+                # 给最后一个节点赋值
+                multi_nodes[k_list[-1]].text = v
+        #outputSignal是二级节点
+        tcn_root.append(multi_nodes["outputSignal"])
+    dom = minidom.parseString(et.tostring(tcn_root))
+    dom.toprettyxml()
+    tcn_schema = let.XMLSchema(let.parse(r"tcn\templates\tcn\timingOutputSignals.xsd"))
+    with open(get_file_link("TCN", shot), "w", encoding="UTF-8") as f:
+        dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
+    try:
+        tcn_schema.assertValid(let.fromstring(et.tostring(tcn_root)))
+
+        with open(get_file_link("TCN",shot), "w", encoding="UTF-8") as f:
+            dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
+        validation="success"
+    except Exception as e:
+        validation=e
+    finally:
+        return validation
+#向列表添加不重复的元素
+def unique_list(lst,value):
+    try:
+        lst.index(value)
+    except ValueError :
+        lst.append(value)
+    return lst
+
+
+def save_dpf(data,user):
+    data.pop("csrfmiddlewaretoken")
+    shot="00000"+data.pop("inputShot")[0]
+    shot=shot[-5:]
+    header = et.fromstring(HEADER.format(user, shot))
+    dpf_tree=et.ElementTree(et.fromstring("""<DPF xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="DPF.xsd"></DPF>"""))
+    dpf_root=dpf_tree.getroot()
+    dpf_root.append(header)
+    second=[]
+    for k in data.keys():
+        second=unique_list(second,k.split("_")[0])
+    for s in second:
+        s_group_v={}
+        for k,v in data.items():
+            if k.startswith(s):
+                s_group_v[k]=v
+        keys=s_group_v.keys()
+        values=np.array(list(s_group_v.values())).T
+
+        for v in values:
+            if s == "OperationMode":
+                print(v)
+            #凡是空值或者值为None的节点，全部剔除掉
+            if np.asarray(v == "", dtype=np.uint8).sum() != v.size:
+                if np.asarray(v == "None", dtype=np.uint8).sum() != v.size:
+                    nodes,_= build_element_instance(keys)
+                    for key,value in zip(keys,v):
+                        append_tag(key.split("_")[0],key.split("_")[1],nodes)
+                        nodes[key.split("_")[1]].text=value
+                    dpf_root.append(nodes[key.split("_")[0]])
+    dom = minidom.parseString(et.tostring(dpf_root))
+    dom.toprettyxml()
+    dpf_schema = let.XMLSchema(let.parse(r"dpf\templates\dpf\DPF.xsd"))
+    try:
+        dpf_schema.assertValid(let.fromstring(et.tostring(dpf_root)))
+        with open(get_file_link("DPF",shot), "w", encoding="UTF-8") as f:
+            dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
+        validation="success"
+    except Exception as e:
+        validation=e
+    finally:
+        return validation
+
+
+def save_acq(data,user):
+    data.pop("csrfmiddlewaretoken")
+    shot = "00000"+data.pop("inputShot")[0]
+    shot=shot[-5:]
+    keys = data.keys()
+    values = np.array(list(data.values())).T
+    # 将数据按照行信号，列节点组织数据
+    header = et.fromstring(HEADER.format(user,shot))
+    #构建包含命名空间的根节点
+    acq_etree=et.ElementTree(et.fromstring("""<ACQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ACQ.xsd"></ACQ>"""))
+    acq_root = acq_etree.getroot()
+    acq_root.append(header)
+    # 按照信号来循环处理
+    for i in range(len(values)):
+        # 生成一个信号所有的节点
+        nodes,_ = build_element_instance(keys)
+        # 遍历一个信号的节点及节点值
+        if np.asarray(values[i] == "", dtype=np.uint8).sum() != values[i].size:
+            if np.asarray(values[i] == "None", dtype=np.uint8).sum() != values[i].size:
+                for k, v in zip(keys, values[i]):
+                    # 按节点路径来组织节点
+                    # 将节点路径解析成列表
+
+                    k_list = k.split("_")
+                    for j in range(len(k_list) - 1):
+                        append_tag(k_list[j], k_list[j + 1], nodes)
+                    # 给最后一个节点赋值
+                    nodes[k_list[-1]].text = v
+
+                acq_root.append(nodes["Channel"])
+    dom = minidom.parseString(et.tostring(acq_root))
+
+    dom.toprettyxml()
+    tcn_schema = let.XMLSchema(let.parse(r"acq\templates\acq\ACQ.xsd"))
+    try:
+        tcn_schema.assertValid(let.fromstring(et.tostring(acq_root)))
+        with open(get_file_link("acq",shot), "w", encoding="UTF-8") as f:
+            dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
+        validation="success"
+    except Exception as e:
+        validation = e
+    finally:
+        return validation
 
 
 
 
-
-
+def add_node(node_name,shot,xml_type):
+    xml_file = et.parse(get_file_link(xml_type,shot))
+    xml_root =xml_file.getroot()
+    new_node=copy.deepcopy(xml_root.find(node_name))
+    for i in list(new_node):
+        i.clear()
+    xml_root.append(new_node)
+    xml_file.write(get_file_link(xml_type,shot))
 
 if __name__=="__main__":
+    pass
 
-    gen_mind_file("ACQ",r"C:\Users\liuyongag\Desktop\NewXml\NewVersionAcq.XML", r"C:\Users\liuyongag\Desktop\NewXml\NewVersionAcq.jm")
+
+
+
+

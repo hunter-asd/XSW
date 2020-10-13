@@ -4,11 +4,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>APS</title>
         {% load static %}
-        <link type="text/css" rel="stylesheet" href="{% static "ACQ/jsmind.css" %}" />
-        <link rel="stylesheet" href="{% static "ACQ/bootstrap.min.css" %}">
-        <link rel="stylesheet" href="{% static "ACQ/bootstrap-table.min.css" %}">
-        <script type="text/javascript" src="{% static "ACQ/jsmind.js" %}"></script>
-        <script type="text/javascript" src="{% static "ACQ/jquery.min.js" %}"></script>
+        <link type="text/css" rel="stylesheet" href="{% static "acq/jsmind.css" %}" />
+        <link rel="stylesheet" href="{% static "acq/bootstrap.min.css" %}">
+        <link rel="stylesheet" href="{% static "acq/bootstrap-table.min.css" %}">
+        <script type="text/javascript" src="{% static "acq/jsmind.js" %}"></script>
+        <script type="text/javascript" src="{% static "acq/jquery.min.js" %}"></script>
         <script type="text/javascript">
 
 
@@ -78,19 +78,28 @@
                     jm.disable_edit();
                     {#jm.expand_to_depth(3)#}
                     $("#Submit").click(function () {
-
-                        $.post("/acq/save/",{
-                            "newacq":JSON.stringify(jm.get_data("node_tree").data),
-                            "shot":$("#inputShot").val()
-                        },
-                        function (data,status) {
-                            if (status=="success"){
-                                alert(data.result)
-                            }else{
-                                alert("some error occur when submit")
+                        var shot=$("#inputShot").val();
+                        $.get("{% url "acq:checkshot" %}",{"shotnum":shot},function (result,status,xhr) {
+                            if(status=="success" && result.older=="True"){
+                                alert("Could not modify experimented files!");
                             }
+                            else{
+                                 $.post("/acq/save/tree",{
+                                "newacq":JSON.stringify(jm.get_data("node_tree").data),
+                                "shot":$("#inputShot").val()
+                                },
+                                function (data,status) {
+                                    if (status=="success"){
+                                        alert(data.result)
+                                    }else{
+                                        alert("some error occur when submit")
+                                    }
 
-                        })
+                                })
+                            }
+                        }
+                    )
+
                     });
                     $("#Modify").click(function () {
                         jm.enable_edit()
@@ -130,7 +139,7 @@
                         window.location.href=window.location.origin+"/home"
                     });
                     $("#Table").click(function () {
-                        window.location.href=window.location.origin+"/acq/load/"
+                        window.location.href=window.location.origin+"/acq/load/table/"+$("#inputShot").val()
                     })
                     $("#jsmind_container").mousedown(function () {
                         var node = jm.get_selected_node()

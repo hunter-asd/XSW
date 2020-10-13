@@ -25,7 +25,7 @@ SECRET_KEY = 'oapy94@p)_l%(%#(%!elzos1otc7%!x7prif+5e-gw$q#=x9ls'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition

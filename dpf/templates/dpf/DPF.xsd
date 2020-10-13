@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EXL machine control information -->
+<!-- Discharge Programme File -->
+<!--  designed by Dr Song xianming  -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:simpleType name="opMode">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="6"/>
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="56"/>
+			<xs:enumeration value="-12"/>
+			<xs:enumeration value="-34"/>
+			<xs:enumeration value="-56"/>
+			<xs:enumeration value="-1"/>
+			<xs:enumeration value="-2"/>
+			<xs:enumeration value="-3"/>
+			<xs:enumeration value="-4"/>
+			<xs:enumeration value="-5"/>
+			<xs:enumeration value="-6"/>
+			<!-- for example, null=0,only positive=1 only negative=2,both pos and neg=3, multi zerocross=4-->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="zeroOne">
+		<xs:restriction base="xs:integer">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<!-- not take part in=0, should take part in=1 -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="DPF">
+		<xs:annotation>
+			<xs:documentation>Units in this file: current=kA, voltage=V, length=mm, time=ms</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Header">
+					<xs:annotation>
+						<xs:documentation>header information</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="version" type="xs:decimal" default="1.0"/>
+							<xs:element name="operator" type="xs:string" default="songxm"/>
+							<xs:element name="shotnum" type="xs:string" default="20000"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="OperationMode" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>operational mode, enumeration type, first use integer for code simplicity</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="value">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="-56"/>
+										<xs:maxInclusive value="56"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="comment" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Command" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Command for subsystem to run, name is the subsys name, value mean in(1) or out(0)</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="value" type="zeroOne"/>
+							<xs:element name="personInCharge" type="xs:string"/>
+							<xs:element name="implementationHistory" type="xs:string"/>
+							<xs:element name="db" type="zeroOne"/>
+							<xs:element name="comment" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PIDcontroller" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>PID parameter for all controller</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="P" type="xs:decimal"/>
+							<xs:element name="I" type="xs:decimal"/>
+							<xs:element name="D" type="xs:decimal"/>
+							<xs:element name="RC" type="xs:decimal"/>
+							<xs:element name="maxdU" type="xs:decimal"/>
+							<xs:element name="FBStart" type="xs:decimal"/>
+							<xs:element name="maxInvAngle" type="xs:decimal"/>
+							<xs:element name="personInCharge" type="xs:string"/>
+							<xs:element name="implementationHistory" type="xs:string"/>
+							<xs:element name="comment" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="EngineeringLimit" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>PID parameter for all controller</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="value" type="xs:decimal"/>
+							<xs:element name="personInCharge" type="xs:string"/>
+							<xs:element name="implementationHistory" type="xs:string"/>
+							<xs:element name="comment" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Other" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>other parameters,need a name and value</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="name" type="xs:string"/>
+							<xs:element name="value" type="xs:decimal"/>
+							<xs:element name="remark" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

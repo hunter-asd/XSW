@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect,reverse
 from .dpfFunction import load_xml,get_file_link,save_xml
 import os.path
-from django.http import JsonResponse
+from django.http import JsonResponse,HttpResponse,Http404
 from django.contrib.auth.decorators import  login_required
 # Create your views here.
-from mds_function import get_current_shot
+from mds_function import get_current_shot,get_effective_newest_shot
 import xml_function
 app_name = "dpf"
 
@@ -14,11 +14,12 @@ def dpf_index(request):
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
+    older=str(int(shot)<=get_effective_newest_shot())
     if os.path.exists(get_file_link("dpf",shot)):
         context = "yes"
     else:
         context = "no"
-    return JsonResponse({"exist": context})
+    return JsonResponse({"exist": context,"older":older})
 
 def dpf_load(request,shot):
     if request.user.is_authenticated:
@@ -29,7 +30,19 @@ def dpf_load(request,shot):
 def dpf_submit(request):
 
     if request.user.is_authenticated:
-        save_xml(request)
-        return redirect(reverse("dpf:dpf_load",kwargs={"shot": request.POST.get("inputShot")}))
+        data=dict(request.POST)
+        validation=xml_function.save_dpf(data,request.user)
+        if validation=="success":
+            return redirect(reverse("dpf:dpf_load",kwargs={"shot": request.POST.get("inputShot")}))
+        else:
+            pass
+    else:
+        return redirect(reverse("dpf:dpf_index"))
+def dpf_new(request):
+    if request.user.is_authenticated:
+        new_node=request.POST.get("new_node")
+        shot=request.POST.get("shotnum")
+        xml_function.add_node(new_node,shot,"DPF")
+        return JsonResponse({"result": "ok"})
     else:
         return redirect(reverse("dpf:dpf_index"))

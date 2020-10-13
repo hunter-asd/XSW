@@ -10,7 +10,7 @@ def get_current_shot(target="MDS"):
         try:
             return MDSplus.Tree.getCurrent("EXL50")
         except Exception as e:
-            get_current_shot()
+            return get_current_shot()
     else:
         tree = et.parse(os.path.join(settings.XMLPATH), r"CurrentShotNum\CurrentShotNum.xml")
         root = tree.getroot()

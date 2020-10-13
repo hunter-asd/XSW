@@ -2,23 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ff1ec5f-3eab-43aa-a5d5-e98365694318" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/liuyongag.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/acq/templates/acq/ACQ.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dpf/templates/dpf/DPF.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tcn/templates/tcn/timingOutputSignals.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/timingOutputSignals.xsd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acq/acqFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/acq/acqFunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acq/templates/ACQ/APS.html" beforeDir="false" afterPath="$PROJECT_DIR$/acq/templates/ACQ/APS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acq/templates/ACQ/ACQ.html" beforeDir="false" afterPath="$PROJECT_DIR$/acq/templates/acq/ACQ.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acq/templates/ACQ/APS.html" beforeDir="false" afterPath="$PROJECT_DIR$/acq/templates/acq/APS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acq/templates/ACQ/ModelACQ.XML" beforeDir="false" afterPath="$PROJECT_DIR$/acq/templates/acq/ModelACQ.XML" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acq/templates/ACQ/NewACQ.html" beforeDir="false" afterPath="$PROJECT_DIR$/acq/templates/acq/NewACQ.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acq/templatetags/my_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/acq/templatetags/my_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acq/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/acq/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/acq/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/acq/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpf/dpfFunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpf/dpfFunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpf/templates/DPF/DPF.html" beforeDir="false" afterPath="$PROJECT_DIR$/dpf/templates/dpf/DPF.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dpf/templates/DPF/ModelDPF.XML" beforeDir="false" afterPath="$PROJECT_DIR$/dpf/templates/dpf/ModelDPF.XML" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpf/templates/dpf/DPF.html" beforeDir="false" afterPath="$PROJECT_DIR$/dpf/templates/dpf/DPF.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dpf/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpf/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dpf/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/dpf/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mds_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/mds_function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcn/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/tcn/function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcn/templates/TCN/04653OUT.XML" beforeDir="false" afterPath="$PROJECT_DIR$/tcn/templates/tcn/04653OUT.XML" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcn/templates/TCN/TCN.html" beforeDir="false" afterPath="$PROJECT_DIR$/tcn/templates/tcn/TCN.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcn/templates/TCN/TCN.xsl" beforeDir="false" afterPath="$PROJECT_DIR$/tcn/templates/tcn/TCN.xsl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tcn/templates/TCN/TcnModel.XML" beforeDir="false" afterPath="$PROJECT_DIR$/tcn/templates/tcn/TcnModel.XML" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tcn/templates/tcn/04653OUT.XML" beforeDir="false" afterPath="$PROJECT_DIR$/tcn/templates/tcn/04653OUT.XML" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tcn/templates/tcn/TCN.html" beforeDir="false" afterPath="$PROJECT_DIR$/tcn/templates/tcn/TCN.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tcn/templates/tcn/TcnModel.XML" beforeDir="false" afterPath="$PROJECT_DIR$/tcn/templates/tcn/TcnModel.XML" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tcn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tcn/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xsw/xml_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/xml_function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_function.py" beforeDir="false" afterPath="$PROJECT_DIR$/xml_function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xsw/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/xsw/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,18 +37,49 @@
     <SUITE FILE_PATH="coverage/FRC$GenerateAcqXml.coverage" NAME="GenerateAcqXml Coverage Results" MODIFIED="1593738029011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Desktop/NewXml" />
     <SUITE FILE_PATH="coverage/FRC$settings.coverage" NAME="settings Coverage Results" MODIFIED="1593872099954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/FRC" />
     <SUITE FILE_PATH="coverage/XSW$xml_function.coverage" NAME="xml_function Coverage Results" MODIFIED="1597739549640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/xsw" />
+    <SUITE FILE_PATH="coverage/XSW$xml_function__1_.coverage" NAME="xml_function (1) Coverage Results" MODIFIED="1601452164039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/FRC$newxmlparse.coverage" NAME="newxmlparse Coverage Results" MODIFIED="1590140391382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/acq/views.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/xml_function.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-390">
-              <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
+            <state relative-caret-position="454">
+              <caret line="135" column="44" lean-forward="true" selection-start-line="135" selection-start-column="44" selection-end-line="135" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/EXLCCS/06000/TCN/06061OUT.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="286" column="28" lean-forward="true" selection-start-line="286" selection-start-column="28" selection-end-line="286" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/EXLCCS/05800/ACQ/asd.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tcn/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -50,67 +88,71 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/acq/acqFunction.py">
+        <entry file="file://$PROJECT_DIR$/dpf/templates/dpf/DPF.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="99" selection-start-line="99" selection-end-line="104" selection-end-column="14" />
+            <state relative-caret-position="391">
+              <caret line="126" column="16" lean-forward="true" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/acq/urls.py">
+        <entry file="file://$PROJECT_DIR$/acq/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="8" column="50" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="50" />
+            <state relative-caret-position="1403">
+              <caret line="61" column="24" lean-forward="true" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
               <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/xml_function.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="118" column="25" lean-forward="true" selection-start-line="118" selection-start-column="25" selection-end-line="118" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#0#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tcn/templates/tcn/TCN.html">
+        <entry file="file://$PROJECT_DIR$/dpf/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="431" column="62" selection-start-line="431" selection-start-column="62" selection-end-line="431" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tcn/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/newxmlparse.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="64" column="68" lean-forward="true" selection-start-line="63" selection-start-column="4" selection-end-line="64" selection-end-column="68" />
+            <state relative-caret-position="368">
+              <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#0#52#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mds_function.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="529">
+              <caret line="45" column="29" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/EXLCCS/06000/DPF/06063DPF.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="22" column="18" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dpf/templates/dpf/DPF.xsd">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -133,10 +175,38 @@
       <find>&quot;name&quot;:e.find(&quot;name&quot;).text</find>
       <find>True</find>
       <find>fi</find>
-      <find>header</find>
       <find>acq1</find>
       <find>DPF</find>
+      <find>om-</find>
+      <find>cmd-</find>
+      <find>pid-</find>
+      <find>PIDcontroller_create</find>
+      <find>el-</find>
+      <find>EngineeringLimit_creat</find>
+      <find>ot-</find>
+      <find>header</find>
+      <find>submit</find>
+      <find>&lt;andSignals&gt;</find>
     </findStrings>
+    <replaceStrings>
+      <replace>OperationMode</replace>
+      <replace>OperationMode-</replace>
+      <replace>OperationMode_</replace>
+      <replace>Command_</replace>
+      <replace>PIDcontroller_</replace>
+      <replace>PIDcontroller_P</replace>
+      <replace>PIDcontroller_I</replace>
+      <replace>PIDcontroller_D</replace>
+      <replace>PIDcontroller_RC</replace>
+      <replace>PIDcontroller_maxdU</replace>
+      <replace>PIDcontroller_FBStart</replace>
+      <replace>PIDcontroller_maxInvAngle</replace>
+      <replace>PIDcontroller_personInCharge</replace>
+      <replace>PIDcontroller_implementationHistory</replace>
+      <replace>EngineeringLimit_</replace>
+      <replace>EngineeringLimit_implementationHistory</replace>
+      <replace>Other_</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -144,22 +214,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ACQ/templates/ACQ/ACQ.html" />
-        <option value="$PROJECT_DIR$/FRC/urls.py" />
-        <option value="$PROJECT_DIR$/templates/FRC/FRC.html" />
-        <option value="$USER_HOME$/Desktop/NewVersionAcq.XML" />
-        <option value="$USER_HOME$/Desktop/jsMind remote.jm" />
-        <option value="$USER_HOME$/Desktop/NewVersionAcq.jm" />
-        <option value="$PROJECT_DIR$/ACQ/templatetags/my_filter.py" />
-        <option value="$PROJECT_DIR$/TCN/templates/TCN/TCN.html" />
-        <option value="$PROJECT_DIR$/DPF/templates/DPF/DPF.html" />
-        <option value="$USER_HOME$/Desktop/ACQ2.XML" />
-        <option value="$USER_HOME$/Desktop/NewXml/GenerateAcqXml.py" />
-        <option value="$PROJECT_DIR$/ACQ/templates/ACQ/AcqMind.html" />
-        <option value="D:/EXLCCS/05000/ACQ/05123ACQ.xml" />
-        <option value="D:/EXLCCS/05000/ACQ/05125ACQ.xml" />
-        <option value="D:/EXLCCS/05000/ACQ/05126ACQ.xml" />
-        <option value="$PROJECT_DIR$/ACQ/templates/ACQ/NewACQ.html" />
         <option value="$PROJECT_DIR$/ACQ/urls.py" />
         <option value="$PROJECT_DIR$/TCN/function.py" />
         <option value="$PROJECT_DIR$/DPF/dpfFunction.py" />
@@ -181,28 +235,44 @@
         <option value="$PROJECT_DIR$/FRC/settings.py" />
         <option value="$PROJECT_DIR$/newxmlparse.py" />
         <option value="$PROJECT_DIR$/xsw/xml_function.py" />
-        <option value="$PROJECT_DIR$/xsw/settings.py" />
-        <option value="$PROJECT_DIR$/mds_function.py" />
         <option value="$PROJECT_DIR$/tcn/function.py" />
         <option value="$PROJECT_DIR$/dpf/dpfFunction.py" />
         <option value="D:/EXLCCS/05000/TCN/05183OUT.XML" />
+        <option value="$PROJECT_DIR$/acq/acqFunction.py" />
+        <option value="$PROJECT_DIR$/mds_function.py" />
+        <option value="$USER_HOME$/Desktop/asd.xml" />
+        <option value="$USER_HOME$/Desktop/timingOutputSignals.xsd" />
+        <option value="D:/EXLCCS/05800/DPF/05981DPF.XML" />
+        <option value="D:/EXLCCS/05800/DPF/DPF.xsd" />
+        <option value="$PROJECT_DIR$/acq/templates/ACQ/APS.html" />
+        <option value="$PROJECT_DIR$/acq/templates/ACQ/ACQ.html" />
+        <option value="$PROJECT_DIR$/acq/templates/acq/APS.html" />
+        <option value="$PROJECT_DIR$/tcn/templates/tcn/timingOutputSignals.xsd" />
+        <option value="D:/EXLCCS/05800/TCN/timingOutputSignals.xsd" />
+        <option value="D:/EXLCCS/05800/TCN/05983OUT.xml" />
+        <option value="D:/EXLCCS/05800/TCN/asd.xml" />
+        <option value="D:/EXLCCS/05800/TCN/05986OUT.xml" />
+        <option value="$PROJECT_DIR$/tcn/templates/tcn/TCN.html" />
         <option value="$PROJECT_DIR$/dpf/urls.py" />
+        <option value="D:/EXLCCS/06000/DPF/06063DPF.xml" />
+        <option value="$PROJECT_DIR$/acq/urls.py" />
+        <option value="$PROJECT_DIR$/acq/templates/acq/ACQ.html" />
+        <option value="$PROJECT_DIR$/acq/templatetags/my_filter.py" />
+        <option value="$PROJECT_DIR$/dpf/templates/dpf/DPF.xsd" />
+        <option value="$PROJECT_DIR$/xsw/settings.py" />
         <option value="$PROJECT_DIR$/dpf/templates/dpf/DPF.html" />
         <option value="$PROJECT_DIR$/dpf/views.py" />
-        <option value="$PROJECT_DIR$/acq/templates/ACQ/APS.html" />
-        <option value="$PROJECT_DIR$/acq/acqFunction.py" />
         <option value="$PROJECT_DIR$/acq/views.py" />
-        <option value="$PROJECT_DIR$/tcn/templates/tcn/TCN.html" />
         <option value="$PROJECT_DIR$/tcn/views.py" />
         <option value="$PROJECT_DIR$/xml_function.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2428" />
-    <option name="y" value="31" />
-    <option name="width" value="1936" />
-    <option name="height" value="1045" />
+    <option name="x" value="2316" />
+    <option name="y" value="155" />
+    <option name="width" value="1934" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -220,6 +290,24 @@
             <path>
               <item name="XSW" type="b2602c69:ProjectViewProjectNode" />
               <item name="XSW" type="462c0819:PsiDirectoryNode" />
+              <item name="acq" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="XSW" type="b2602c69:ProjectViewProjectNode" />
+              <item name="XSW" type="462c0819:PsiDirectoryNode" />
+              <item name="acq" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="XSW" type="b2602c69:ProjectViewProjectNode" />
+              <item name="XSW" type="462c0819:PsiDirectoryNode" />
+              <item name="acq" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="acq" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="XSW" type="b2602c69:ProjectViewProjectNode" />
+              <item name="XSW" type="462c0819:PsiDirectoryNode" />
               <item name="dpf" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -252,6 +340,11 @@
               <item name="tcn" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="tcn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="XSW" type="b2602c69:ProjectViewProjectNode" />
+              <item name="XSW" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="XSW" type="b2602c69:ProjectViewProjectNode" />
@@ -272,25 +365,25 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/EXL50_Py" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/EXL50_Py/DS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\liuyongag\PycharmProjects\FRC\LOGSYS\templates\LOGSYS" />
-      <recent name="C:\Users\liuyongag\PycharmProjects\FRC\LOGSYS\static\LOGSYS" />
-      <recent name="C:\Users\liuyongag\PycharmProjects\FRC\ACQ\static\ACQ" />
-      <recent name="C:\Users\liuyongag\PycharmProjects\FRC\TCN\static\TCN" />
-      <recent name="C:\Users\liuyongag\PycharmProjects\FRC\DPF\static\DPF" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\liuyongag\PycharmProjects\XSW" />
+      <recent name="C:\Users\liuyongag\PycharmProjects\XSW\xsw" />
       <recent name="C:\Users\liuyongag\PycharmProjects\FRC\ACQ\static\ACQ" />
       <recent name="C:\Users\liuyongag\PycharmProjects\FRC" />
       <recent name="C:\Users\liuyongag\PycharmProjects\FRC\FRC" />
-      <recent name="C:\Users\liuyongag\PycharmProjects\FRC\TCN\templates\TCN" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\liuyongag\PycharmProjects\XSW\acq\templates\acq" />
+      <recent name="C:\Users\liuyongag\PycharmProjects\XSW\dpf\templates\dpf" />
+      <recent name="C:\Users\liuyongag\PycharmProjects\XSW\tcn\templates\tcn" />
+      <recent name="C:\Users\liuyongag\PycharmProjects\FRC\LOGSYS\templates\LOGSYS" />
+      <recent name="C:\Users\liuyongag\PycharmProjects\FRC\LOGSYS\static\LOGSYS" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -305,10 +398,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Django server.FRC">
-    <configuration name="APS.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/FRC/ACQ/templates/ACQ/APS.html" useBuiltInWebServerPort="true">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Django server.xsw">
     <configuration name="GenerateAcqXml" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="XSW" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -375,10 +465,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="xml_function (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="XSW" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/xml_function.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="xml_function" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="XSW" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/xsw" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -394,7 +509,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="FRC" type="Python.DjangoServer" factoryName="Django server">
+    <configuration name="xsw" type="Python.DjangoServer" factoryName="Django server">
       <module name="XSW" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -419,20 +534,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Django server.FRC" />
-      <item itemvalue="JavaScript Debug.APS.html" />
+      <item itemvalue="Django server.xsw" />
       <item itemvalue="Python.GenerateAcqXml" />
       <item itemvalue="Python.newxmlparse" />
       <item itemvalue="Python.settings" />
       <item itemvalue="Python.xml_function" />
+      <item itemvalue="Python.xml_function (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.xml_function (1)" />
         <item itemvalue="Python.xml_function" />
         <item itemvalue="Python.xml_function" />
         <item itemvalue="Python.settings" />
         <item itemvalue="Python.GenerateAcqXml" />
-        <item itemvalue="Python.newxmlparse" />
       </list>
     </recent_temporary>
   </component>
@@ -467,6 +582,10 @@
       <workItem from="1593867133497" duration="44812000" />
       <workItem from="1597717090492" duration="545000" />
       <workItem from="1597717675604" duration="54179000" />
+      <workItem from="1598433614221" duration="1552000" />
+      <workItem from="1601166771727" duration="20781000" />
+      <workItem from="1601261001926" duration="42806000" />
+      <workItem from="1602207796569" duration="57393000" />
     </task>
     <task id="LOCAL-00001" summary="add save mind data to xml">
       <created>1593676391537</created>
@@ -514,7 +633,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="455269000" />
+    <option name="totallyTimeSpent" value="577801000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -529,49 +648,49 @@
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12579957" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12953092" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32848233" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4968017" weight="0.37941787" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49840087" weight="0.2848233" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32640332" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49626866" visible="true" weight="0.26091477" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.32640332" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.49840087" weight="0.2837838" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49946696" weight="0.32952183" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.11353944" side_tool="true" visible="true" weight="0.18191268" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3898129" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.88646054" visible="true" weight="0.18191268" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50373137" side_tool="true" weight="0.37852496" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3908524" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.88539445" weight="0.38149688" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.1641791" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.1641791" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.123667374" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12846482" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32848233" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.27754676" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.44386694" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32744282" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32952183" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49626866" weight="0.24116424" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.32640332" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="7" sideWeight="0.49840087" weight="0.2837838" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49946696" weight="0.32952183" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.27754676" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.39328277" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.37318087" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50373137" side_tool="true" weight="0.37852496" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3908524" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.88539445" visible="true" weight="0.3981289" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.1641791" />
       <window_info anchor="right" id="Database" order="4" />
     </layout-to-restore>
   </component>
@@ -639,13 +758,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/acq/templates/ACQ/APS.html</url>
-          <line>131</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -663,12 +775,32 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>data[&quot;children&quot;]</expression-string>
+        <expression-string>xml_root</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dataif len(data[&quot;children&quot;]) == 1 and not data[&quot;children&quot;][0].get(&quot;children&quot;, None):</expression-string>
+        <expression-string>xml_root.find(node_name)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data.get</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>next(data.values())</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data.values().next</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>data.values()</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -678,471 +810,354 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>type(data)</expression-string>
+        <expression-string>data</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>mind_data</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>request.POST.get(&quot;outputSignal_id&quot;)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>request.POST.copy()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>help(request.POST)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>request.POST</expression-string>
+        <expression-string>et.tostring(tcn_root)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/EXLCCS/05000/ACQ/05130ACQ.xml">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/utils/http.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="n#Channel#0;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#1;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#2;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#3;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#4;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#5;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#6;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#7;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#8;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#9;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#10;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#11;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#12;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#13;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#14;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#15;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#16;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#17;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#18;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#19;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#20;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#21;n#ACQ#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="446" selection-start-line="446" selection-end-line="446" />
         </state>
       </provider>
     </entry>
-    <entry file="file://D:/EXLCCS/05000/ACQ/05129ACQ.xml">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/utils/datastructures.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="1746" selection-start-line="1746" selection-end-line="1746" />
-          <folding>
-            <element signature="n#Card#0;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acq/templates/ACQ/NewACQ.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="58" selection-start-line="58" selection-end-line="60" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/db/models/fields/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2219">
-          <caret line="1760" column="6" selection-start-line="1760" selection-start-column="6" selection-end-line="1760" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/db/models/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="145" column="8" selection-start-line="145" selection-start-column="8" selection-end-line="145" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/static/LOGSYS/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="5" column="114668" selection-start-line="5" selection-start-column="114668" selection-end-line="5" selection-end-column="114668" />
-          <folding>
-            <element signature="e#28369#28624#2" expanded="true" />
-            <element signature="e#29221#29395#1" expanded="true" />
-            <element signature="e#29435#29690#1" expanded="true" />
-            <element signature="e#32008#32322#2" expanded="true" />
-            <element signature="e#32931#33105#1" expanded="true" />
-            <element signature="e#33145#33459#1" expanded="true" />
-            <element signature="e#62432#62640#2" expanded="true" />
-            <element signature="e#62869#63026#2" expanded="true" />
-            <element signature="e#63429#63585#2" expanded="true" />
-            <element signature="e#65072#65246#1" expanded="true" />
-            <element signature="e#79062#79315#2" expanded="true" />
-            <element signature="e#80182#80441#2" expanded="true" />
-            <element signature="e#110420#110616#2" expanded="true" />
-            <element signature="e#110662#110859#2" expanded="true" />
-          </folding>
+        <state relative-caret-position="213">
+          <caret line="182" selection-start-line="182" selection-end-line="182" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/http/request.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-956">
-          <caret line="298" column="8" selection-start-line="298" selection-start-column="8" selection-end-line="298" selection-end-column="8" />
+        <state relative-caret-position="213">
+          <caret line="516" selection-start-line="516" selection-end-line="516" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xsw/urls.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/copy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-          <folding>
-            <element signature="e#627#659#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="282">
+          <caret line="185" selection-start-line="185" selection-end-line="185" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/models.py">
+    <entry file="file://$USER_HOME$/Desktop/timingOutputSignals.xsd">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="483">
+          <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/log/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="43" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="43" />
-          <folding>
-            <element signature="e#1#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/templates/LOGSYS/LOG.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="212" column="79" selection-start-line="212" selection-start-column="79" selection-end-line="212" selection-end-column="79" />
-          <folding>
-            <element signature="n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#4;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#5;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#6;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#button#0;n#div#6;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#4205#4212#1#HTML" expanded="true" />
-            <element signature="e#4304#4311#1#HTML" expanded="true" />
-            <element signature="n#style#0;n#textarea#0;n#div#2;n#form#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#9747#9795#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/EXLCCS/05000/ACQ/05124ACQ.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/EXLCCS/05000/ACQ/05125ACQ.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4110">
-          <caret line="1" column="97" selection-start-line="1" selection-start-column="94" selection-end-line="1" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acq/static/ACQ/jsmind.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="24" column="15" lean-forward="true" selection-start-line="24" selection-start-column="15" selection-end-line="24" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FRC.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="64" column="73" selection-start-line="64" selection-start-column="73" selection-end-line="64" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="58" column="9" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xsw/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/NewXml/b.xml">
+    <entry file="file://$PROJECT_DIR$/timingOutputSignals.xsd">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/NewXml/a.xml">
+    <entry file="file://D:/EXLCCS/05800/TCN/05982OUT.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" selection-start-column="25" selection-end-column="25" />
+        <state relative-caret-position="483">
+          <caret line="21" column="49" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/NewXml/New.XML">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="90">
-          <caret column="572" selection-start-column="568" selection-end-column="572" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/NewXml/New1.XML">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="390">
-          <caret line="1" column="1667" selection-start-line="1" selection-start-column="1300" selection-end-line="1" selection-end-column="1667" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/xml/etree/ElementTree.py">
+    <entry file="file://D:/EXLCCS/05800/DPF/DPF.xsd">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-228">
-          <caret line="720" column="22" selection-start-line="720" selection-start-column="14" selection-end-line="720" selection-end-column="22" />
+        <state relative-caret-position="299">
+          <caret line="16" column="41" lean-forward="true" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Desktop/NewXml/NewVersionAcq.XML">
+    <entry file="file://D:/EXLCCS/05800/DPF/05981DPF.XML">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1050">
-          <caret line="145" column="24" lean-forward="true" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
-          <folding>
-            <element signature="n#Channel#1;n#Card#0;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
-            <element signature="n#Channel#2;n#Card#0;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
-            <element signature="n#Card#1;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
-            <element signature="n#Card#2;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
-            <element signature="n#Card#3;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
-            <element signature="n#Card#4;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
-            <element signature="n#Card#5;n#Crate#0;n#System#0;n#ACQ#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="2369">
+          <caret line="103" column="15" selection-start-line="103" selection-start-column="1" selection-end-line="103" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/importlib/__init__.py">
+    <entry file="file://D:/EXLCCS/05800/DPF/05982DPF.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        <state relative-caret-position="-6141">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/template/defaulttags.py">
+    <entry file="file://D:/EXLCCS/05800/DPF/asd.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="807" selection-start-line="807" selection-end-line="807" />
+        <state relative-caret-position="-299">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tcn/urls.py">
+    <entry file="file://$PROJECT_DIR$/acq/acqFunction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="61" lean-forward="true" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/EXLCCS/05000/TCN/05183OUT.XML">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xsw/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2650">
-          <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dpf/templates/dpf/DPF.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="335" column="148" selection-start-line="335" selection-start-column="148" selection-end-line="335" selection-end-column="148" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/EXLCCS/05000/DPF/05183DPF.XML">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2040">
-          <caret line="436" column="17" selection-start-line="436" selection-start-column="1" selection-end-line="436" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dpf/dpfFunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
+        <state relative-caret-position="-1505">
+          <caret line="63" selection-start-line="63" selection-end-line="66" selection-end-column="83" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dpf/urls.py">
+    <entry file="file://$PROJECT_DIR$/acq/templates/acq/NewACQ.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="59" lean-forward="true" selection-start-line="7" selection-start-column="59" selection-end-line="7" selection-end-column="59" />
+        <state relative-caret-position="-4002" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/conf/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/ACQ/05982ACQ.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FRC.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2172" />
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/ACQ/ACQ.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-552" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/acq/templates/acq/APS.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="83" column="68" selection-start-line="83" selection-start-column="68" selection-end-line="83" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tcn/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/acq/templates/acq/ACQ.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-48" />
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/TCN/timingOutputSignals.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="69" column="47" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/NewXml/NewVersionAcq.XML">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="136" column="24" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="24" />
+          <folding>
+            <element signature="n#Crate#1;n#System#0;n#ACQ#0;n#!!top" />
+            <element signature="n#Crate#2;n#System#0;n#ACQ#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/shortcuts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tcn/templates/tcn/timingOutputSignals.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="54" column="124" selection-start-line="54" selection-start-column="124" selection-end-line="54" selection-end-column="124" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/ctypes/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-100">
+          <caret line="331" column="8" selection-start-line="331" selection-start-column="8" selection-end-line="331" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/cffi/backend_ctypes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="323" column="24" selection-start-line="323" selection-start-column="24" selection-end-line="323" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/mdsplus-7.49.8-py3.6.egg/MDSplus/tree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7">
+          <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tcn/templates/tcn/TCN.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="424" column="34" lean-forward="true" selection-start-line="424" selection-start-column="34" selection-end-line="424" selection-end-column="34" />
+          <folding>
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#form#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#1;n#form#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#div#1;n#form#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#div#1;n#form#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#form#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#form#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#1;n#form#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/TCN/05986OUT.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="263" column="52" lean-forward="true" selection-start-line="263" selection-start-column="52" selection-end-line="263" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/TCN/asd.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4071">
+          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/TCN/05983OUT.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-644">
+          <caret line="89" column="10" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+          <folding>
+            <element signature="n#andSignals#0;n#orSignals#0;n#triggerConditions#0;n#outputSignal#12;n#timingOutputSignal#0;n#!!top" />
+            <element signature="n#andSignals#1;n#orSignals#0;n#triggerConditions#0;n#outputSignal#12;n#timingOutputSignal#0;n#!!top" />
+            <element signature="n#andSignals#2;n#orSignals#0;n#triggerConditions#0;n#outputSignal#12;n#timingOutputSignal#0;n#!!top" />
+            <element signature="n#andSignals#0;n#orSignals#0;n#triggerConditions#0;n#outputSignal#13;n#timingOutputSignal#0;n#!!top" />
+            <element signature="n#andSignals#1;n#orSignals#0;n#triggerConditions#0;n#outputSignal#13;n#timingOutputSignal#0;n#!!top" />
+            <element signature="n#andSignals#2;n#orSignals#0;n#triggerConditions#0;n#outputSignal#13;n#timingOutputSignal#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/DPF/qwe.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="566" column="62" selection-start-line="566" selection-start-column="62" selection-end-line="566" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/1535132276/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="5480" column="8" selection-start-line="5480" selection-start-column="8" selection-end-line="5480" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/DPF/05986DPF.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dpf/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/DPF/05983DPF.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="553" column="12" selection-start-line="553" selection-start-column="12" selection-end-line="553" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/06000/DPF/asd.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="19" lean-forward="true" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/acq/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="48" lean-forward="true" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/acq/templates/acq/ACQ.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1843">
+          <caret line="316" column="37" selection-start-line="316" selection-start-column="34" selection-end-line="316" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/acq/templatetags/my_filter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144">
+          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/06000/DPF/06063DPF.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xsw/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dpf/templates/dpf/DPF.xsd">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mds_function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        <state relative-caret-position="529">
+          <caret line="45" column="29" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="29" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/utils/deprecation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/servers/basehttp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="193" selection-start-line="193" selection-end-line="193" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/wsgiref/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/handlers/exception.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/contrib/staticfiles/handlers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="64" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/handlers/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/django/core/handlers/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tcn/function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-832">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acq/templates/ACQ/APS.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1650">
-          <caret line="73" column="37" lean-forward="true" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acq/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/acq/acqFunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="99" selection-start-line="99" selection-end-line="104" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tcn/templates/tcn/TCN.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="431" column="62" selection-start-line="431" selection-start-column="62" selection-end-line="431" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newxmlparse.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="64" column="68" lean-forward="true" selection-start-line="63" selection-start-column="4" selection-end-line="64" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dpf/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        <state relative-caret-position="368">
+          <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>
@@ -1151,25 +1166,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/acq/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-390">
-          <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
+        <state relative-caret-position="1403">
+          <caret line="61" column="24" lean-forward="true" selection-start-line="61" selection-start-column="24" selection-end-line="61" selection-end-column="24" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dpf/templates/dpf/DPF.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="126" column="16" lean-forward="true" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/05800/ACQ/asd.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tcn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="506">
+          <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/EXLCCS/06000/TCN/06061OUT.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="286" column="28" lean-forward="true" selection-start-line="286" selection-start-column="28" selection-end-line="286" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xml_function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="118" column="25" lean-forward="true" selection-start-line="118" selection-start-column="25" selection-end-line="118" selection-end-column="25" />
+        <state relative-caret-position="454">
+          <caret line="135" column="44" lean-forward="true" selection-start-line="135" selection-start-column="44" selection-end-line="135" selection-end-column="44" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>

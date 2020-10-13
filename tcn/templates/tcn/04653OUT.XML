@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="timingOutputSignals.xsl"?>
-<timingOutputSignal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="timingOutputSignals.xsd">
+<timingOutputSignal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../timingOutputSignals.xsd">
 <Header>
 <version>11.0</version>
 <operator>songxm</operator>

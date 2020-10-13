@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 编辑使用 XMLSpy v2006 U (http://www.altova.com) 由 any (any) -->
+<!-- EXL Data Acquisiton Configuration Information -->
+<!--  designed by Dr Song xianming from SWIP DAS in 2019.4.4-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ACQ">
+		<xs:annotation>
+			<xs:documentation>Units in this file: current=kA, voltage=V, length=mm, time=ms, frequency=Hz</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Header">
+					<xs:annotation>
+						<xs:documentation>header information</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="version" type="xs:decimal" default="1.0"/>
+							<xs:element name="operator" type="xs:string" default="songxm"/>
+							<xs:element name="shotnum" type="xs:string" default="20000"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Channel" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>The root element is usually named the same as the doctype.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<!--  unsignedInt is 32 bits  -->
+							<!--  unsignedShort is 16 bits  -->
+							<xs:element name="ChnlName" type="xs:string"/>
+							<xs:element name="Unit" type="xs:string" default="V"/>
+							<xs:element name="ChnlId" type="xs:unsignedInt"/>
+							<xs:element name="Len" type="xs:unsignedInt"/>
+							<!--  Post = length after the trigger  -->
+							<xs:element name="Post" type="xs:unsignedInt"/>
+							<!--  MaxDat = maximum value for digitalization of the signal  -->
+							<xs:element name="MaxDat" type="xs:unsignedInt" default="32768"/>
+							<xs:element name="Freq" type="xs:decimal" default="1000"/>
+							<xs:element name="LowRang" type="xs:decimal" default="0"/>
+							<xs:element name="HighRang" type="xs:decimal" default="10"/>
+							<xs:element name="Factor" type="xs:decimal" default="1"/>
+							<xs:element name="Offset" type="xs:decimal" default="0"/>
+							<xs:element name="Dly" type="xs:decimal" default="0"/>
+							<xs:element name="DatAttr" type="xs:unsignedShort" default="1"/>
+							<xs:element name="DatWth" type="xs:unsignedShort" default="2"/>
+							<!--  additional information for channel  -->
+							<xs:element name="division" type="xs:string"/>
+							<xs:element name="personInCharge" type="xs:string"/>
+							<xs:element name="fromPosition" type="xs:string"/>
+							<xs:element name="insituPosition" type="xs:string"/>
+							<xs:element name="implementationHistory" type="xs:string" default="2019.04.04"/>
+							<xs:element name="channelDescription" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

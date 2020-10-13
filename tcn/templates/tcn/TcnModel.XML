@@ -1,4 +1,4 @@
-<timingOutputSignal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="timingOutputSignals.xsd">
+<timingOutputSignal xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../timingOutputSignals.xsd">
 <Header>
 <version>11.0</version>
 <operator>liuyong</operator>
