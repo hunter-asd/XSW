@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import  login_required
 # Create your views here.
 from mds_function import get_current_shot,get_effective_newest_shot
 import xml_function
+from urllib import parse
 app_name = "dpf"
 
 @login_required(login_url="../login")
@@ -30,12 +31,14 @@ def dpf_load(request,shot):
 def dpf_submit(request):
 
     if request.user.is_authenticated:
-        data=dict(request.POST)
-        validation=xml_function.save_dpf(data,request.user)
-        if validation=="success":
-            return redirect(reverse("dpf:dpf_load",kwargs={"shot": request.POST.get("inputShot")}))
-        else:
-            pass
+        # data=dict(request.POST)
+        data = parse.parse_qs(request.POST.get("data").replace("\"", "").strip())
+        save_result=xml_function.save_dpf(data,request.user)
+        # if validation=="success":
+        #     return redirect(reverse("dpf:dpf_load",kwargs={"shot": request.POST.get("inputShot")}))
+        # else:
+        #     pass
+        return JsonResponse({"save_result":save_result})
     else:
         return redirect(reverse("dpf:dpf_index"))
 def dpf_new(request):

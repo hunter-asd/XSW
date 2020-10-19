@@ -164,7 +164,7 @@ def save_tcn(data,user):
         for k, v in zip(keys, values[i]):
             # 按节点路径来组织节点
             # 将节点路径解析成列表
-            if v:
+            if v.upper()!="NONE":
                 k_list = k.split("_")
                 for j in range(len(k_list) - 1):
                     append_tag(k_list[j], k_list[j + 1], nodes,multi_nodes)
@@ -184,7 +184,7 @@ def save_tcn(data,user):
             dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
         validation="success"
     except Exception as e:
-        validation=e
+        validation=str(e)
     finally:
         return validation
 #向列表添加不重复的元素
@@ -235,7 +235,7 @@ def save_dpf(data,user):
             dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
         validation="success"
     except Exception as e:
-        validation=e
+        validation=str(e)
     finally:
         return validation
 
@@ -280,11 +280,15 @@ def save_acq(data,user):
             dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
         validation="success"
     except Exception as e:
-        validation = e
+        validation = str(e)
     finally:
         return validation
 
-
+def save_acq_tree(shot,data):
+    dom = minidom.parseString(data)
+    dom.toprettyxml()
+    with open(get_file_link("acq", shot), "w", encoding="UTF-8") as f:
+        dom.writexml(f, indent='', addindent='\t', newl="\n", encoding='UTF-8')
 
 
 def add_node(node_name,shot,xml_type):

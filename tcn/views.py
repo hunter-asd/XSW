@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth.decorators import  login_required
 import os.path
 import xml_function
+from urllib import parse
 # from .function import save_xml
 # Create your views here.
 from mds_function import get_current_shot,get_effective_newest_shot
@@ -31,9 +32,14 @@ def check_shot(request):
 
 def tcn_submit(request):
     if request.user.is_authenticated:
-        data=dict(request.POST)
-        print(xml_function.save_tcn(data,request.user))
-        return redirect(reverse("tcn:tcn_load",kwargs={"shot": request.POST.get("input-shot")}))
+        # data=dict(request.POST.get("data"))
+        data=parse.parse_qs(request.POST.get("data").replace("\"","").strip())
+        save_result = xml_function.save_tcn(data,request.user)
+        # if save_result == "success":
+        #     return redirect(reverse("tcn:tcn_load",kwargs={"shot": request.POST.get("input-shot")}))
+        # else:
+        #     return render(request,"tcn/ErrorPage.html",context={"error":save_result})
+        return JsonResponse({"save_result":save_result})
     else:
         return redirect("tcn:tcn_index")
 

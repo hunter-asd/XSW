@@ -84,7 +84,7 @@
                                 alert("Could not modify experimented files!");
                             }
                             else{
-                                 $.post("/acq/save/tree",{
+                                 $.post("/acq/save/tree/",{
                                 "newacq":JSON.stringify(jm.get_data("node_tree").data),
                                 "shot":$("#inputShot").val()
                                 },

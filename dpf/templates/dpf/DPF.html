@@ -54,19 +54,39 @@
                 $("#home").click(function () {
                     window.location.href=window.location.origin+"/home"
                 });
-                 $("#Submit").click(function () {
+                {# $("#Submit").click(function () {#}
+                {#    var shot=$("#inputShot").val();#}
+                {##}
+                {#    $.get("{% url "dpf:checkshot" %}",{"shotnum":shot},function (result,status,xhr) {#}
+                {#        if(status==="success" && result.older==="True"){#}
+                {#            alert("Could not modify experimented files!");#}
+                {#        }#}
+                {#        else{#}
+                {#            $("form").submit();#}
+                {#        }#}
+                {#    }#}
+                {#    )#}
+                {#'});#}
+                $("#Submit").click(function () {
                     var shot=$("#inputShot").val();
-
                     $.get("{% url "dpf:checkshot" %}",{"shotnum":shot},function (result,status,xhr) {
                         if(status==="success" && result.older==="True"){
                             alert("Could not modify experimented files!");
                         }
                         else{
-                            $("form").submit();
+                            $.post("{% url "dpf:dpf_save" %}",{"data":JSON.stringify($("form").serialize())},function(result,status,xhr){
+                                if(status=="success"){
+                                    alert(result.save_result);
+                                    if (result.save_result=="success"){
+                                        window.location.href="../load/"+shot;
+                                    }
+                                }
+                            })
+
                         }
                     }
                     )
-                })
+                });
                 $("#new_send").click(function (){
                     var node=$(":radio:checked").val()
                     var shot=$("#inputShot").val();
