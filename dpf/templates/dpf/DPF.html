@@ -23,23 +23,28 @@
                 $("#ModifyAll").dblclick(function () {
                     $("input").not("#inputShot").attr("readonly","readonly");
                 })
-                var quiteTime = 60 * 60;
-                var currentTime = 0;
-                $("*").click(function () {
-                    currentTime = 0;
-                });
+                function quitWithoutOperate() {
 
-                $('*').mouseover(function () {
-                    currentTime = 0;
-                });
 
-                setInterval(function () {
-                    currentTime++;
-                    if (currentTime >= quiteTime) {
-                        {#alert("20分钟无人操作！");#}
-                        window.location.href = window.location.origin + "/login";
-                    }
-                }, 1000);
+                    var quiteTime = 60 * 60;
+                    var currentTime = 0;
+                    $("*").click(function () {
+                        currentTime = 0;
+                    });
+
+                    $('*').mouseover(function () {
+                        currentTime = 0;
+                    });
+
+                    setInterval(function () {
+                        currentTime++;
+                        if (currentTime >= quiteTime) {
+                            {#alert("20分钟无人操作！");#}
+                            window.location.href = window.location.origin + "/login";
+                        }
+                    }, 1000);
+                }
+                quitWithoutOperate
                 $("#Load").click(function () {
                     var shot=$("#inputShot").val();
                     $.get("../checkshot",{"shotnum":shot},function (result,status,xhr) {

@@ -8,30 +8,34 @@
         <!-- Bootstrap CSS -->
         {% load static %}
         <link rel="stylesheet" href="{% static "tcn/bootstrap.min.css" %}">
+         <link rel="stylesheet" href="{% static "tcn/bootstrap-table.min.css" %}">
         <style type="text/css">
 
         </style>
         <script type="text/javascript" src="{% static "tcn/jquery.min.js" %}"></script>
         <script type="text/javascript">
             $(function () {
-                var quiteTime = 60 * 60;
-                var currentTime = 0;
-                $("*").click(function () {
+                function quitWithoutOperate()
+                {
+                    var quiteTime = 60 * 60;
+                    var currentTime = 0;
+                    $("*").click(function () {
                         currentTime = 0;
                     });
 
-                $('*').mouseover(function () {
-                     currentTime = 0;
-                });
+                    $('*').mouseover(function () {
+                        currentTime = 0;
+                    });
 
-                setInterval(function () {
-                    currentTime++;
-                    if(currentTime>=quiteTime)
-                    {
-                        {#alert("20分钟无人操作！");#}
-                        window.location.href=window.location.origin+"/login";
-                    }
-                }, 1000);
+                    setInterval(function () {
+                        currentTime++;
+                        if (currentTime >= quiteTime) {
+                            {#alert("20分钟无人操作！");#}
+                            window.location.href = window.location.origin + "/login";
+                        }
+                    }, 1000);
+                }
+                quitWithoutOperate()
                 $("input").attr("required","required");
                 $("div.paraset").not("#CCLaunch").hide();
                 $("table").hide();
@@ -43,7 +47,7 @@
                 })
                 $("input").not(".header,#input-shot").attr("readonly","true");
                 $("button#ModifyAll").click(function () {
-                    $("input").removeAttr("readonly");
+                    $("input").not("#AndSignalName").removeAttr("readonly");
                 })
                 $("button#ModifyAll").dblclick(function () {
                     $("input").not("#input-shot").attr("readonly","true");
@@ -60,6 +64,7 @@
                         })
                     }
                 )
+                {#$("div#andSignals").hide()#}
                 $("#Primary").click(function () {
                     $("table").toggle();
                 })
@@ -100,8 +105,8 @@
                         }
                     }
                     )
-                }
-                )
+                })
+
 				{#$("button#add_node").click(function () {#}
 				{#    var num=parseInt($("#AndSignal").text())-1;#}
 				{#    var strnum=num.toString();#}
@@ -330,7 +335,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div  class="" id="andSignals">
+                                    <div  class="collapse" id="andSignals">
                                         {% for andsig in datum.triggerConditions.orSignals.andSignals %}
                                             <div class="form-row" id="andSignalArea{{ forloop.counter0 }}">
                                                 <div class="form-group col-md-4">
@@ -459,38 +464,58 @@
                                 <button type="button" id="home" class="btn btn-outline-primary home" style="width: 50%">Home</button>
                             </div>
                         </div>
-                        <div class="row" >
-                             <table class="table table-hover " style="text-align: center">
+                        <div class="row">
+                             <table  class="table table-hover " style="text-align: center" >
+{#                               <table id="table" data-sort-class="table-active" data-toggle="table" style="text-align: center">#}
                                   <thead>
                                         <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Port</th>
-                                            <th scope="col">Andsgm</th>
-                                            <th scope="col">StartTime</th>
-                                            <th scope="col">HighWidth</th>
-                                            <th scope="col">TimeUnit</th>
+                                            <th scope="col" data-field="Id" data-sortable="true">Id</th>
+                                            <th scope="col" data-field="Name">Name</th>
+                                            <th scope="col" data-field="Port">Port</th>
+                                            <th scope="col" data-field="AndSigma1">AndSigma1</th>
+                                            <th scope="col" data-field="AndMgeV">AndMgeV</th>
+                                            <th scope="col" data-field="IsProtection">IsProtection</th>
+                                            <th scope="col" data-field="TroubleExit">TroubleExit</th>
+                                            <th scope="col" data-field="IsContinue">IsContinue</th>
+                                            <th scope="col" data-field=StartTime" data-sortable="true">StartTime</th>
+                                            <th scope="col" data-field="HighWidth" data-sortable="false">HighWidth</th>
+                                            <th scope="col" data-field="EndTime" data-sortable="true">EndTime</th>
+                                            <th scope="col" data-field="TimeUnit">TimeUnit</th>
                                         </tr>
                                   </thead>
                                   <tbody>
-                                  {% for datam1 in tcn.outputSignal %}
-                                      {% if datam1.pulseClass.highWidth != "0" %}
-                                          <tr>
-                                            <th scope="row">{{ datam1.id }}</th>
-                                            <td>{{ datam1.name }}</td>
-                                            <td>{{ datam1.attachedInformation.insituPosition }}</td>
-                                             {% with asn=datam1.triggerConditions.orSignals.andSignals %}
-                                                 <td>{{ asn.0.andSignalName}}+{{ asn.1.andSignalName}}+{{ asn.2.andSignalName}}</td>
-                                              {% endwith %}
-{#                                            <td>{{ datam1.triggerConditions.orSignals.andSignals.0.andSignalName}}+{{ datam1.triggerConditions.orSignals.andSignals.1.andSignalName}}+{{ datam1.triggerConditions.orSignals.andSignals.2.andSignalName}}</td>#}
-                                            <td>{{ datam1.pulseClass.startTime }}</td>
-                                            <td>{{ datam1.pulseClass.highWidth }}</td>
-                                            <td>{{ datam1.timeUnit }}</td>
-                                        </tr>
-                                      {% endif %}
-                                  {% endfor %}
+                                      {% for datam1 in tcn.outputSignal %}
+                                          {% if datam1.pulseClass.highWidth != "0" %}
+                                              <tr>
+                                                <th scope="row">{{ datam1.id }}</th>
+                                                <td>{{ datam1.name }}</td>
+                                                {% if  datam1.attachedInformation.insituPosition|length > 2 %}
+                                                    <td style="color:red">{{ datam1.attachedInformation.insituPosition }}</td>
+                                                {% else %}
+                                                    <td>{{ datam1.attachedInformation.insituPosition }}</td>
+                                                {% endif %}
+                                                 {% with asn=datam1.triggerConditions.orSignals.andSignals %}
+                                                     {% for s in asn %}
+                                                        {% if s.delayTime == "1" %}
+                                                            <td>{{ s.andSignalName }}</td>
+                                                        {% else %}
+                                                            <td></td>
+                                                        {% endif %}
+                                                     {% endfor %}
 
+    {#                                                 <td>{{ asn.0.andSignalName}}+{{ asn.1.andSignalName}}+{{ asn.2.andSignalName}}</td>#}
+                                                  {% endwith %}
+    {#                                            <td>{{ datam1.triggerConditions.orSignals.andSignals.0.andSignalName}}+{{ datam1.triggerConditions.orSignals.andSignals.1.andSignalName}}+{{ datam1.triggerConditions.orSignals.andSignals.2.andSignalName}}</td>#}
 
+                                                  <td>{{ datam1.pulseClass.startTime}}</td>
+
+                                                  <td>{{ datam1.pulseClass.highWidth }}</td>
+
+                                                  <td>{{ datam1.pulseClass.highWidth|add:datam1.pulseClass.startTime}}</td>
+                                                  <td>{{ datam1.timeUnit }}</td>
+                                            </tr>
+                                          {% endif %}
+                                      {% endfor %}
                                   </tbody>
                              </table>
                         </div>
@@ -505,6 +530,7 @@
 
         <script src="{% static "tcn/popper.min.js" %}" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="{% static "tcn/bootstrap.min.js" %}" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="{% static "tcn/bootstrap-table.min.js"%}"></script>
     </body>
 
 </html>

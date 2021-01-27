@@ -34,3 +34,7 @@ def mylenOfList(object):
         return 1
     else:
         return object
+@register.filter(name="str2num")
+def mystr2num(string):
+
+    return int(string)

@@ -3,7 +3,7 @@ from django.http import JsonResponse,HttpResponse
 from django.contrib.auth.decorators import login_required
 import os.path
 import json
-from mds_function import get_current_shot,get_effective_newest_shot
+from mds_function import get_current_shot,get_effective_shot_data
 from xml_function import get_file_link,load_xml,xml_to_mind,mind_to_xml,save_acq,add_node,save_acq_tree
 from urllib import parse
 # Create your views here.
@@ -34,7 +34,6 @@ def acq_submit(request):
         else:
 
             # data=dict(request.POST)
-            print(request.POST.get("data"))
             data = parse.parse_qs(request.POST.get("data").replace("\"", "").strip())
             save_result=save_acq(data,request.user)
             # return redirect(reverse("acq:acq_load_table",kwargs={"shot":request.POST.get("inputShot")}))
@@ -63,7 +62,7 @@ def acq_load(request,shot):
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
-    older = str(int(shot) <= get_effective_newest_shot())
+    older = str(int(shot) <= get_effective_shot_data()[0])
     if os.path.exists(get_file_link("acq",shot)):
         context = "yes"
     else:

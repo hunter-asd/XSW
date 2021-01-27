@@ -7,7 +7,7 @@ import xml_function
 from urllib import parse
 # from .function import save_xml
 # Create your views here.
-from mds_function import get_current_shot,get_effective_newest_shot
+from mds_function import get_current_shot,get_effective_shot_data
 @login_required(login_url="../login")
 def tcn_index(request):
     return redirect(reverse("tcn:tcn_load", kwargs={"shot": get_current_shot()}))
@@ -22,7 +22,7 @@ def tcn_load(request, shot):
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
-    older = str(int(shot) < get_effective_newest_shot())
+    older = str(int(shot) <= get_effective_shot_data()[0])
     if os.path.exists(xml_function.get_file_link("TCN",shot)):
         context = "yes"
     else:

@@ -26,23 +26,26 @@
                 $("#ModifyAll").dblclick(function () {
                     $("input").not("#TotalTime,#After0,#inputShot").attr("readonly","readonly");
                 });
-                var quiteTime = 60 * 60;
-                var currentTime = 0;
-                $("*").click(function () {
-                    currentTime = 0;
-                });
+                function quitWithoutOperate() {
+                    var quiteTime = 60 * 60;
+                    var currentTime = 0;
+                    $("*").click(function () {
+                        currentTime = 0;
+                    });
 
-                $('*').mouseover(function () {
-                    currentTime = 0;
-                });
+                    $('*').mouseover(function () {
+                        currentTime = 0;
+                    });
 
-                setInterval(function () {
-                    currentTime++;
-                    if (currentTime >= quiteTime) {
-                        {#alert("20分钟无人操作！");#}
-                        window.location.href = window.location.origin + "/login";
-                    }
-                }, 1000);
+                    setInterval(function () {
+                        currentTime++;
+                        if (currentTime >= quiteTime) {
+                            {#alert("20分钟无人操作！");#}
+                            window.location.href = window.location.origin + "/login";
+                        }
+                    }, 1000);
+                }
+                quitWithoutOperate()
                 $("#Tree").click(function () {
                         window.location.href=window.location.origin+"/acq/load/tree/"+$("#inputShot").val()
                     })
@@ -191,7 +194,7 @@
                                             <th scope="col" data-field="LowRang" data-visible="true">LowRang</th>
                                             <th scope="col" data-field="HighRang" data-visible="true">HighRang</th>
                                             <th scope="col" data-field="Factor" data-visible="true">Factor</th>
-                                            <th scope="col" ddata-field="Offset" data-visible="true">Offset</th>
+                                            <th scope="col" data-field="Offset" data-visible="true">Offset</th>
                                             <th scope="col" data-field="Dly">Dly</th>
                                             <th scope="col" data-field="DatAttr" data-visible="true">DatAttr</th>
                                             <th scope="col" data-field="DatWth" data-visible="true">DatWth</th>

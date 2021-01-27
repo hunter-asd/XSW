@@ -25,7 +25,7 @@ SECRET_KEY = 'oapy94@p)_l%(%#(%!elzos1otc7%!x7prif+5e-gw$q#=x9ls'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1","192.168.0.180","localhost"]
 
 
 # Application definition
@@ -127,5 +127,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 XMLPATH=r"D:\EXLCCS"

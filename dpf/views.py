@@ -4,7 +4,7 @@ import os.path
 from django.http import JsonResponse,HttpResponse,Http404
 from django.contrib.auth.decorators import  login_required
 # Create your views here.
-from mds_function import get_current_shot,get_effective_newest_shot
+from mds_function import get_current_shot,get_effective_shot_data
 import xml_function
 from urllib import parse
 app_name = "dpf"
@@ -15,7 +15,7 @@ def dpf_index(request):
 
 def check_shot(request):
     shot = request.GET.get("shotnum")
-    older=str(int(shot)<=get_effective_newest_shot())
+    older=str(int(shot)<=get_effective_shot_data()[0])
     if os.path.exists(get_file_link("dpf",shot)):
         context = "yes"
     else:
